@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block access to any future admin/private paths
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://kryntar.xyz/sitemap.xml
