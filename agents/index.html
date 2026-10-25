@@ -296,6 +296,7 @@ button,input{font:inherit;color:inherit}
         </div>
         <p class="quote" id="wQuote">合计：– <small></small></p>
         <button class="pill bnb wide" id="mintBtn" type="button" data-i18n="mintBnb">在 BNB Chain 铸造</button>
+        <div id="adminBox" hidden style="margin-top:14px;padding:14px;border:1px dashed #F0B90B;border-radius:14px;text-align:center"><div id="adminTxt" style="margin-bottom:10px;font-size:14px;opacity:.9"></div><button class="pill wide" id="adminBtn" type="button"></button></div>
         <div class="status" id="wStatus"></div>
       </div>
       <div class="card">
@@ -630,7 +631,7 @@ const I18N = {
     navMain: "主导航", top_agents: "代理", top_game: "游戏", top_kinds: "图鉴",
     play: "🎮 玩游戏", play_txt: "玩游戏", play_aria: "玩游戏", langAria: "切换语言 / Switch language",
     connect: "连接钱包", chainN: "链 {n}",
-    demo: "演示模式 — 合约尚未部署", demoEthers: "演示模式 — ethers 加载失败",
+    demo: "演示模式 — 合约尚未部署", admClosedNow: "你是合约 owner。铸造目前关闭。", admOpenNow: "你是合约 owner。铸造已开放。", admOpen: "🔓 开放铸造", admClose: "🔒 关闭铸造", admBusy: "等待钱包确认…", admDoneOpen: "铸造已开放！", admDoneClose: "铸造已关闭。", demoEthers: "演示模式 — ethers 加载失败",
     tagline: "挖矿 · 铸造 · 共鸣",
     sub: "1,111 个像素矿工代理，完全在 BNB Chain 链上绘制和存储。铸造你的代理，带它去挖矿。",
     mintBnb: "在 BNB Chain 铸造", tryHere: "在本页试玩 →",
@@ -694,7 +695,7 @@ const I18N = {
     navMain: "Main", top_agents: "Agents", top_game: "Game", top_kinds: "Kinds",
     play: "🎮 Play game", play_txt: "Play game", play_aria: "Play game", langAria: "切换语言 / Switch language",
     connect: "Connect wallet", chainN: "Chain {n}",
-    demo: "Demo mode — contract not deployed yet", demoEthers: "Demo mode — ethers failed to load",
+    demo: "Demo mode — contract not deployed yet", admClosedNow: "You are the contract owner. Minting is closed.", admOpenNow: "You are the contract owner. Minting is open.", admOpen: "🔓 Open minting", admClose: "🔒 Close minting", admBusy: "Confirm in your wallet…", admDoneOpen: "Minting is open!", admDoneClose: "Minting is closed.", demoEthers: "Demo mode — ethers failed to load",
     tagline: "Mine · Mint · Resonate",
     sub: "1,111 pixel miner agents, drawn and kept entirely on BNB Chain. Mint your agent, then take it mining.",
     mintBnb: "Mint on BNB Chain", tryHere: "Try it here →",
@@ -871,9 +872,34 @@ function renderStats() {
   $("wPriceFig").textContent = price; $("wFeeFig").textContent = fee;
   $("rules").innerHTML = [1, 2, 3, 4, 5].map((i) => `<li>${t("rule" + i, { fee, price, price2 })}</li>`).join("");
   $("howList").innerHTML = [1, 2, 3, 4, 5, 6].map((i) => `<li>${t("how" + i, { fee, price })}</li>`).join("");
-  renderPrompt(); updateQuote();
+  renderPrompt(); updateQuote(); renderAdmin();
 }
 
+
+/* ---------- owner admin: open / close mint ---------- */
+let OWNER = null, adminBusy = false;
+async function loadOwner() { if (DEMO || !readC) return; try { OWNER = await readC.owner(); } catch (e) { console.warn(e); } renderAdmin(); }
+function renderAdmin() {
+  const box = $("adminBox"); if (!box) return;
+  const isOwner = !!(S.account && OWNER && S.account.toLowerCase() === OWNER.toLowerCase());
+  box.hidden = !isOwner; if (!isOwner) return;
+  $("adminTxt").textContent = t(S.open ? "admOpenNow" : "admClosedNow");
+  $("adminBtn").textContent = adminBusy ? t("admBusy") : t(S.open ? "admClose" : "admOpen");
+  $("adminBtn").disabled = adminBusy;
+}
+async function toggleMint() {
+  if (adminBusy) return;
+  try {
+    adminBusy = true; renderAdmin();
+    await ensureChain();
+    const c = new ethers.Contract(CONFIG.CONTRACT_ADDRESS, ABI, signer);
+    const tx = await c.setMintOpen(!S.open);
+    await tx.wait();
+    toast(t(!S.open ? "admDoneOpen" : "admDoneClose"), "ok");
+    await loadStats();
+  } catch (e) { toast(mapError(e), "err"); }
+  finally { adminBusy = false; renderAdmin(); }
+}
 /* ---------- wallet ---------- */
 let bp = null, signer = null;
 const NETS = { 56: "BNB Chain", 97: "BSC Testnet", 1: "Ethereum", 137: "Polygon", 8453: "Base", 42161: "Arbitrum", 204: "opBNB" };
@@ -911,6 +937,7 @@ async function ensureChain() {
 }
 async function onAccount() {
   if (S.account && !$("lAddr").value) $("lAddr").value = S.account;
+  renderAdmin();
   await loadWalletStats();
   await loadOwned();
 }
@@ -1512,6 +1539,8 @@ applyStatic(); renderLegend(); renderStartBtn(); renderWalletBtn(); renderWallet
 $("parade").innerHTML = [0, 4, 2, 7, 5, 9].map((k, i) => `<div class="px" style="animation-delay:${i * -0.5}s">${agentSVG(k, false, false)}</div>`).join("");
 $("walletBtn").addEventListener("click", () => { if (!S.account) connectWallet(); else { location.hash = "#lookup"; } });
 $("mintBtn").addEventListener("click", doMint);
+$("adminBtn").addEventListener("click", toggleMint);
+loadOwner();
 renderStepper("w"); renderStepper("a"); renderPrompt(); updHud(); renderPicker();
 route();
 /* 直接打开 …/#game 时：等上方内容加载完再对齐一次（异步数据会改变页面高度） */
