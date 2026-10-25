@@ -1,0 +1,1468 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="virtual-protocol-site-verification" content="7363f758dccabcb6e75f205f63f56c1a" />
+<title>KRYNTAR Agents · BNB Chain 链上像素代理</title>
+<meta name="description" content="1,111 个像素矿工代理，完全在 BNB Chain 链上绘制和存储。铸造你的代理，带它去挖矿。" />
+<meta name="theme-color" content="#0a1220" />
+<link rel="canonical" href="https://kryntar.xyz/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="KRYNTAR" />
+<meta property="og:title" content="KRYNTAR Agents · BNB Chain 链上像素代理" />
+<meta property="og:description" content="挖矿 · 铸造 · 共鸣。BNB Chain 上 1,111 个完全链上的像素代理。" />
+<meta property="og:url" content="https://kryntar.xyz/" />
+<meta property="og:image" content="https://kryntar.xyz/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800;900&family=Share+Tech+Mono&display=swap" />
+<style>
+:root{
+  --void:#0a1220;--panel:#101826;--panel-a:rgba(10,16,26,.66);--panel2:#16233a;--line:rgba(255,255,255,.14);--line2:rgba(255,255,255,.08);
+  --text:#fff;--dim:#a9b7ca;--cyan:#3d8bff;--magenta:#8b6bff;--gold:#ffc23c;--green:#39ff88;--lava:#ff5c39;--bnb:#f0b90b;
+  --r:18px;--tap:44px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--void);color:var(--text);font:600 15px/1.5 'Nunito','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',system-ui,sans-serif}
+body{min-height:100dvh;background:
+  radial-gradient(ellipse 70% 45% at 20% -5%,rgba(139,107,255,.28),transparent 70%),
+  radial-gradient(ellipse 60% 40% at 90% 5%,rgba(61,139,255,.24),transparent 70%),
+  linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px) 0 0/24px 24px,
+  linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px) 0 0/24px 24px,var(--void);background-attachment:fixed}
+h1,h2,h3,.baloo{font-family:'Baloo 2','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;margin:0;line-height:1.2}
+.mono{font-family:'Share Tech Mono',monospace}
+a{color:var(--cyan)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.dim{color:var(--dim)}
+.px svg,.px img,img.px{image-rendering:pixelated;display:block;width:100%;height:auto}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(10,18,32,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}
+.top .wrap{display:flex;align-items:center;gap:10px;min-height:60px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;min-height:var(--tap)}
+.word{font:800 24px/1 'Baloo 2',sans-serif;letter-spacing:2px;color:#9d8cff;background:linear-gradient(90deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.badge-bnb{display:inline-flex;align-items:center;gap:5px;font:800 12px 'Nunito';color:#1b1200;background:var(--bnb);border-radius:999px;padding:3px 8px;white-space:nowrap}
+.badge-bnb::before{content:"";width:7px;height:7px;background:#1b1200;transform:rotate(45deg)}
+.toplinks{display:flex;gap:2px;margin-left:auto}
+.toplinks a{color:var(--dim);text-decoration:none;font-weight:800;font-size:14px;padding:0 10px;min-height:var(--tap);display:flex;align-items:center;border-radius:999px}
+.toplinks a:hover,.toplinks a.on{color:#fff;background:#1a2538}
+.pill{border:1px solid var(--line);background:var(--panel2);border-radius:999px;min-height:var(--tap);padding:0 16px;font-weight:800;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#fff;transition:transform .1s,opacity .2s,background .2s}
+.pill:active{transform:scale(.96)}
+.pill:disabled{opacity:.45;cursor:not-allowed}
+.pill:hover:not(:disabled){background:#1d2c47}
+.pill.main{background:linear-gradient(90deg,var(--cyan),var(--magenta));border:0}
+.pill.bnb{background-color:var(--bnb);background-image:linear-gradient(90deg,var(--bnb),#ffd95a);color:#1b1200;border:0;box-shadow:0 6px 22px rgba(240,185,11,.28)}
+.pill.bnb:disabled{opacity:1;background-image:none;background-color:#8a7330;color:#140e00;box-shadow:none}
+.pill.wide{width:100%;min-height:54px;font-size:17px}
+#walletBtn .net{font-size:11px;color:var(--dim);font-weight:700}
+#walletBtn .dotg{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+.x-gamebtn{white-space:nowrap}
+.x-herocta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:18px auto 0}
+.x-herocta .pill{min-height:48px;font-size:15px}
+.x-gamenote{text-align:center;margin:12px 0 0}
+.tile h3 small{font:700 12px 'Nunito',sans-serif;color:var(--dim);margin-left:4px}
+.x-lang{padding:0 12px;gap:4px;font-size:13px;white-space:nowrap}
+.x-lang span{color:var(--dim)}
+.x-lang span.on{color:#fff}
+@media(max-width:640px){.toplinks{display:none}.x-gamebtn{margin-left:auto;padding:0 12px}#walletBtn{padding:0 12px}.word{font-size:21px}}
+@media(max-width:430px){.top .badge-bnb{display:none}.top .wrap{gap:6px}.word{font-size:18px}.x-gamebtn{padding:0;width:var(--tap)}.x-gamebtn .x-gtxt{display:none}.x-lang{padding:0 9px;font-size:12px}#walletBtn{padding:0 10px;font-size:13px}}
+
+.demo{background:#1f1d1c;border-bottom:1px solid rgba(255,194,60,.3);color:var(--gold);text-align:center;font-weight:800;font-size:13px;padding:7px 12px}
+
+/* hero */
+.hero{position:relative;padding:34px 0 18px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% 10% auto;height:420px;background:radial-gradient(circle at 35% 50%,rgba(139,107,255,.35),transparent 55%),radial-gradient(circle at 65% 45%,rgba(61,139,255,.3),transparent 55%);filter:blur(10px);pointer-events:none;z-index:-1}
+.tag{font:800 13px 'Nunito';letter-spacing:3px;text-transform:uppercase;color:var(--dim)}
+.hero h1{font-size:clamp(38px,9vw,64px);margin:6px 0 10px}
+.hero h1 span{color:#9d8cff;background:linear-gradient(90deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{max-width:600px;margin:0 auto;color:var(--dim);font-size:16px}
+.parade{display:flex;justify-content:center;gap:clamp(6px,2vw,18px);margin:24px auto 18px}
+.parade .px{width:clamp(44px,12vw,72px);animation:float 3.2s ease-in-out infinite;filter:drop-shadow(0 6px 14px rgba(139,107,255,.35))}
+.parade .px svg{border-radius:10px}
+@keyframes float{50%{transform:translateY(-10px)}}
+.counter{max-width:520px;margin:0 auto;background:var(--panel-a);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.counter .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.counter .big{font:800 28px 'Baloo 2'}
+.counter .big small{font-size:16px;color:var(--dim)}
+.state{font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+.state::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dim)}
+.state.open{color:var(--green)}.state.open::before{background:var(--green);box-shadow:0 0 8px var(--green)}
+.state.closed{color:var(--gold)}.state.closed::before{background:var(--gold)}
+.bar{height:12px;border-radius:999px;background:var(--panel2);overflow:hidden;margin-top:10px;border:1px solid var(--line2)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--magenta),#c9b8ff);box-shadow:0 0 14px rgba(139,107,255,.7);transition:width .8s ease;min-width:6px;border-radius:999px}
+.rules{list-style:none;padding:0;margin:16px auto 0;max-width:720px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.rules li{background:var(--panel-a);border:1px solid var(--line2);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--dim)}
+.rules b{color:#fff}
+
+/* tabs */
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:14px 0 6px;position:sticky;top:60px;z-index:20;background:linear-gradient(var(--void) 70%,transparent)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:0 0 auto;text-decoration:none;color:var(--dim);font-weight:800;font-size:14px;border:1px solid var(--line2);background:var(--panel);border-radius:999px;min-height:var(--tap);padding:0 14px;display:flex;align-items:center}
+.tabs a.on{color:#0a1220;background:linear-gradient(90deg,var(--cyan),var(--magenta));color:#fff;border-color:transparent}
+.view{display:none;padding:10px 0 40px;animation:fade .25s}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.vh{margin:6px 0 14px}
+.vh h2{font-size:28px}
+.vh p{margin:4px 0 0;color:var(--dim);max-width:640px}
+
+.card{background:var(--panel-a);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.grid2{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:820px){.grid2{grid-template-columns:1fr 1fr}}
+.lbl{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;font-weight:800;margin-bottom:6px;display:block}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat{background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:10px 12px}
+.stat b{display:block;font:800 26px 'Baloo 2'}
+.stat span{font-size:12px;color:var(--dim);font-weight:800}
+.x-tier .lbl{margin-bottom:2px}
+.x-tier b{font-size:22px}
+.x-tier.is-free{border-color:rgba(57,255,136,.4)}
+.x-tier.is-paid{border-color:rgba(240,185,11,.4)}
+.x-tier.is-out{opacity:.55}
+.x-minted{font-size:13px;color:var(--dim);margin:0 0 12px}
+.x-minted b{color:#fff}
+.stats.x-three{grid-template-columns:repeat(3,1fr)}
+
+.stepper{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.stepper button{width:var(--tap);height:var(--tap);border-radius:50%;border:1px solid var(--line);background:var(--panel2);font:800 22px 'Baloo 2';cursor:pointer}
+.stepper button:disabled{opacity:.35;cursor:not-allowed}
+.stepper output{font:800 34px 'Baloo 2';min-width:52px;text-align:center}
+.stepper .hint{font-size:13px;color:var(--dim)}
+.quote{font:800 20px 'Baloo 2';margin:0 0 12px}
+.quote small{font:700 13px 'Nunito';color:var(--dim)}
+.field{width:100%;min-height:var(--tap);border-radius:12px;border:1px solid var(--line);background:var(--panel);padding:10px 12px;font-family:'Share Tech Mono',monospace;font-size:14px}
+.field::placeholder{color:#6f7f96}
+.inrow{display:flex;gap:8px}
+.inrow .field{flex:1;min-width:0}
+.status{font-size:13px;color:var(--dim);min-height:20px;margin-top:10px;word-break:break-word}
+.status a{font-family:'Share Tech Mono',monospace}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--panel)}
+.seg button{border:0;background:none;border-radius:999px;min-height:38px;padding:0 14px;font-weight:800;font-size:13px;color:var(--dim);cursor:pointer}
+.seg button.on{background:var(--panel2);color:#fff}
+.prompt{white-space:pre-wrap;word-break:break-word;font:14px/1.55 'Share Tech Mono',monospace;background:#070d18;border:1px solid var(--line);border-radius:14px;padding:14px;max-height:420px;overflow:auto;margin:12px 0;color:#d7e3f4}
+.note{font-size:13px;color:var(--dim);margin:10px 0 0}
+
+/* agent tiles */
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.tile{background:var(--panel-a);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:flex;flex-direction:column;gap:6px}
+.tile .px{width:100%;max-width:160px;margin:0 auto}
+.tile .px svg,.tile .px img{border-radius:12px}
+.tile h3{font-size:18px}
+.tile .meta{font-size:12px;color:var(--dim)}
+.tile .perk{font-size:12px;color:var(--dim);border-top:1px solid var(--line2);padding-top:6px;margin-top:auto}
+.tile .perk b{color:var(--green)}
+.chipr{display:inline-flex;font-size:11px;font-weight:900;border-radius:999px;padding:2px 8px;background:var(--panel2);border:1px solid var(--line2);color:var(--dim)}
+.chipr.pc{background:rgba(139,107,255,.2);color:#c9b8ff;border-color:rgba(139,107,255,.5)}
+.chipr.re{background:rgba(255,45,85,.15);color:#ff7d95;border-color:rgba(255,45,85,.45)}
+.chipr.sup{font-family:'Share Tech Mono',monospace}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.rare-row{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin-bottom:26px;max-width:520px}
+.rare-row .tile{border-color:rgba(139,107,255,.45);background:linear-gradient(160deg,rgba(139,107,255,.16),var(--panel-a))}
+.h3s{font-size:20px;margin:0 0 10px}
+.owner{font-family:'Share Tech Mono',monospace;font-size:12px}
+.skel{background:linear-gradient(90deg,var(--panel) 0%,#1a2740 50%,var(--panel) 100%);background-size:200% 100%;animation:sh 1.2s linear infinite;border-radius:12px}
+@keyframes sh{to{background-position:-200% 0}}
+.skel.sq{aspect-ratio:1}
+.skel.ln{height:12px;margin-top:6px}
+.empty{color:var(--dim);text-align:center;padding:28px 12px;border:1px dashed var(--line);border-radius:var(--r);grid-column:1/-1}
+.reveal .tile{animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.6) translateY(16px)}}
+#revealBox{margin-top:18px}
+
+/* game */
+.picker{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}
+.pick{flex:0 0 auto;width:86px;border:1px solid var(--line2);background:var(--panel);border-radius:14px;padding:6px;cursor:pointer;text-align:center;font-size:11px;font-weight:800;color:var(--dim)}
+.pick .px{width:56px;margin:0 auto 4px}
+.pick .px svg,.pick .px img{border-radius:8px}
+.pick.on{border-color:var(--magenta);color:#fff;box-shadow:0 0 0 2px rgba(139,107,255,.45),0 0 18px rgba(139,107,255,.35)}
+.pick .try{display:block;color:var(--gold);font-size:10px}
+.recruit{display:flex;align-items:center;justify-content:center;width:56px;height:56px;margin:0 auto 4px;border-radius:8px;background:var(--panel2);font-size:26px}
+.gamebox{max-width:520px;margin:0 auto}
+.perkline{font-size:13px;color:var(--dim);margin:2px 0 12px;min-height:20px}
+.perkline b{color:var(--green)}
+.hud{display:grid;grid-template-columns:64px repeat(3,1fr);gap:8px;margin-bottom:10px;align-items:stretch}
+.hud .card{padding:8px 6px;text-align:center;border-radius:14px}
+.hud .l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;font-weight:800}
+.hud .v{font:800 22px/1.1 'Baloo 2'}
+.me{display:flex;align-items:center;justify-content:center}
+.me .px{width:56px}
+.me .px svg,.me .px img,.me .recruit{border-radius:10px}
+.me.bob .px{animation:bob .6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px)}}
+#timebar{height:8px;border-radius:8px;background:var(--panel2);overflow:hidden;margin-bottom:10px}
+#timefill{height:100%;width:100%;background:linear-gradient(90deg,var(--green),var(--cyan),var(--magenta))}
+#grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;position:relative;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+#grid.shake{animation:shake .35s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.hole{aspect-ratio:1;border-radius:50% 50% 44% 44%/40% 40% 60% 60%;background:radial-gradient(ellipse at 50% 72%,#02050b 0 38%,#0d1626 60%,#18233a 100%);border:1px solid rgba(139,107,255,.25);box-shadow:inset 0 -8px 18px rgba(139,107,255,.18),inset 0 6px 12px rgba(0,0,0,.6),0 0 12px rgba(61,139,255,.08);display:flex;align-items:center;justify-content:center;font-size:clamp(26px,8vw,38px);position:relative;cursor:pointer;overflow:hidden}
+.hole .ore{transform:scale(0) translateY(30%);transition:transform .12s ease-out;filter:drop-shadow(0 0 10px var(--glow,#fff))}
+.hole.up .ore{transform:scale(1)}
+.hole.up{box-shadow:inset 0 -10px 22px var(--glowa,rgba(139,107,255,.35)),inset 0 6px 12px rgba(0,0,0,.6)}
+.hole.hit{animation:hit .25s}
+.hole.bad{animation:bad .35s}
+@keyframes hit{50%{background:radial-gradient(circle,rgba(57,255,136,.35),#0d1626)}}
+@keyframes bad{50%{background:radial-gradient(circle,rgba(255,92,57,.55),#0d1626)}}
+.float{position:absolute;pointer-events:none;font:800 18px 'Baloo 2';animation:up .7s forwards;z-index:5;text-shadow:0 2px 6px #000}
+@keyframes up{to{transform:translateY(-40px);opacity:0}}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-size:12px;color:var(--dim);margin:12px 0}
+.cta{display:block;text-align:center;font-weight:800;margin:10px 0 0}
+.ov{position:fixed;inset:0;background:rgba(5,8,15,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.ov.show{display:flex}
+.ov .card{max-width:400px;width:100%;text-align:center;background:var(--panel)}
+.ov .px{width:110px;margin:10px auto}
+.ov .px svg,.ov .px img{border-radius:14px}
+.rank{display:inline-block;padding:3px 14px;border-radius:999px;font:900 13px 'Nunito';letter-spacing:1px;background:linear-gradient(90deg,var(--cyan),var(--magenta));margin:6px 0}
+.ovbtns{display:flex;gap:8px;margin-top:12px}
+.ovbtns .pill{flex:1}
+
+/* footer + toast */
+.foot{border-top:1px solid var(--line2);padding:22px 0 calc(28px + env(safe-area-inset-bottom));font-size:13px;color:var(--dim)}
+.foot p{margin:4px 0}
+.foot a.mono{display:inline-flex;align-items:center;min-height:var(--tap);min-width:var(--tap)}
+.foot .word{font-size:18px}
+#toasts{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;width:min(92vw,420px);pointer-events:none}
+.toast{background:#1a2438;border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:12px;padding:10px 14px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);animation:fade .2s}
+.toast.err{border-left-color:var(--lava)}.toast.ok{border-left-color:var(--green)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#wallet" aria-label="KRYNTAR Agents"><span class="word">KRYNTAR</span><span class="badge-bnb">BNB Chain</span></a>
+    <nav class="toplinks" data-i18n-aria="navMain" aria-label="主导航">
+      <a href="#wallet" data-top="wallet" data-i18n="top_agents">代理</a>
+      <a href="#game" data-top="game" data-i18n="top_game">游戏</a>
+      <a href="#kinds" data-top="kinds" data-i18n="top_kinds">图鉴</a>
+    </nav>
+    <a class="pill main x-gamebtn" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" data-i18n-aria="play_aria" aria-label="玩游戏">🎮<span class="x-gtxt" data-i18n="play_txt">玩游戏</span></a>
+    <button class="pill x-lang" id="langBtn" type="button" data-i18n-aria="langAria" aria-label="切换语言"><span data-l="zh" class="on">中文</span>/<span data-l="en">EN</span></button>
+    <button class="pill" id="walletBtn" type="button">连接钱包</button>
+  </div>
+</header>
+<div class="demo" id="demoBanner" hidden data-i18n="demo">演示模式 — 合约尚未部署</div>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="tag" data-i18n="tagline">挖矿 · 铸造 · 共鸣</p>
+    <h1><span>KRYNTAR</span> Agents</h1>
+    <p class="sub" data-i18n="sub">1,111 个像素矿工代理，完全在 BNB Chain 链上绘制和存储。铸造你的代理，带它去挖矿。</p>
+    <div class="x-herocta">
+      <a class="pill bnb" href="#wallet" data-i18n="mintBnb">在 BNB Chain 铸造</a>
+      <a class="pill main" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" data-i18n="play">🎮 玩游戏</a>
+      <a class="pill" href="#game" data-i18n="tryHere">在本页试玩 →</a>
+    </div>
+    <div class="parade" id="parade" aria-hidden="true"></div>
+    <div class="counter">
+      <div class="row">
+        <div class="big"><span id="cMinted">–</span> <small>/ 1,111</small></div>
+        <span class="state" id="cState">加载中…</span>
+      </div>
+      <div class="bar"><i id="cBar"></i></div>
+    </div>
+    <ul class="rules" id="rules"></ul>
+  </section>
+
+  <nav class="tabs" id="tabs" data-i18n-aria="tabsAria" aria-label="标签页">
+    <a href="#agent" data-tab="agent" data-i18n="tab_agent">AI 代理提示词</a>
+    <a href="#wallet" data-tab="wallet" data-i18n="tab_wallet">钱包铸造</a>
+    <a href="#kinds" data-tab="kinds" data-i18n="tab_kinds">全部种类</a>
+    <a href="#latest" data-tab="latest" data-i18n="tab_latest">最新铸造</a>
+    <a href="#lookup" data-tab="lookup" data-i18n="tab_lookup">查钱包</a>
+    <a href="#game" data-tab="game" data-i18n="tab_game">游戏</a>
+  </nav>
+
+  <!-- MINT WALLET -->
+  <section class="view" id="v-wallet">
+    <div class="vh"><h2 data-i18n="w_title">钱包铸造</h2><p data-i18n="w_desc">连接钱包，选择数量，发送交易。种类随机，图像直接来自链上。</p></div>
+    <div class="grid2">
+      <div class="card">
+        <div class="stats">
+          <div class="stat x-tier is-free" id="wTierFree"><span class="lbl" data-i18n="freeMint">免费铸造</span><b id="wFeeFig">0.0004 BNB</b><span id="wFree">剩余 2/2</span></div>
+          <div class="stat x-tier is-paid" id="wTierPaid"><span class="lbl" data-i18n="paidMint">付费铸造</span><b id="wPriceFig">0.002 BNB</b><span id="wPaid">剩余 2/2</span></div>
+        </div>
+        <p class="x-minted" id="wMinted"></p>
+        <span class="lbl" data-i18n="qty">数量</span>
+        <div class="stepper" data-stepper="w">
+          <button type="button" data-d="-1" data-i18n-aria="dec" aria-label="减少">−</button><output id="wQty">1</output><button type="button" data-d="1" data-i18n-aria="inc" aria-label="增加">+</button>
+          <span class="hint" id="wMax">最多 4 个</span>
+        </div>
+        <p class="quote" id="wQuote">合计：– <small></small></p>
+        <button class="pill bnb wide" id="mintBtn" type="button" data-i18n="mintBnb">在 BNB Chain 铸造</button>
+        <div class="status" id="wStatus"></div>
+      </div>
+      <div class="card">
+        <h3 class="h3s" data-i18n="how">如何运作</h3>
+        <ul class="dim" id="howList" style="margin:0;padding-left:18px;font-size:14px"></ul>
+      </div>
+    </div>
+    <div id="revealBox" hidden>
+      <h3 class="h3s" data-i18n="newAgents">你的新代理 ✨</h3>
+      <div class="tiles reveal" id="revealGrid"></div>
+      <p class="x-gamenote"><a class="pill main" data-game-url data-game-label="playWithLbl" href="https://kryntar.xyz/" target="_blank" rel="noopener">带这个代理去玩 → https://kryntar.xyz/</a></p>
+    </div>
+  </section>
+
+  <!-- AI AGENT PROMPT -->
+  <section class="view" id="v-agent">
+    <div class="vh"><h2 data-i18n="a_title">AI 代理提示词</h2><p data-i18n="a_desc">此处无需钱包。选择数量，复制提示词，发给拥有 BNB Chain 钱包的 AI 代理；它会用自己的钱包铸造。</p></div>
+    <div class="card">
+      <div class="grid2">
+        <div>
+          <span class="lbl" data-i18n="qty">数量</span>
+          <div class="stepper" data-stepper="a">
+            <button type="button" data-d="-1" data-i18n-aria="dec" aria-label="减少">−</button><output id="aQty">1</output><button type="button" data-d="1" data-i18n-aria="inc" aria-label="增加">+</button>
+            <span class="hint">1–4</span>
+          </div>
+        </div>
+        <div>
+          <label class="lbl" for="aWallet" data-i18n="aWalletLbl">代理钱包（可选）</label>
+          <input class="field" id="aWallet" placeholder="0x…" autocomplete="off" spellcheck="false" />
+          <div class="status" id="aInfo"></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px">
+        <div class="seg" id="promptLang" role="group" data-i18n-aria="promptLangAria" aria-label="提示词语言"><button type="button" data-pl="zh">中文</button><button type="button" data-pl="en">English</button></div>
+        <button class="pill main" id="copyBtn" type="button" data-i18n="copy">复制提示词</button>
+      </div>
+      <pre class="prompt" id="promptBox"></pre>
+    </div>
+  </section>
+
+  <!-- KINDS -->
+  <section class="view" id="v-kinds">
+    <div class="vh"><h2 data-i18n="k_title">全部种类</h2><p data-i18n="k_desc">10 个种类，1,111 个代理。每个代理都由 12×12 像素网格在链上绘制。</p></div>
+    <h3 class="h3s" data-i18n="rare">稀有</h3>
+    <div class="rare-row" id="rareRow"></div>
+    <h3 class="h3s" data-i18n="every">每个种类</h3>
+    <div class="tiles" id="kindGrid"></div>
+  </section>
+
+  <!-- LATEST -->
+  <section class="view" id="v-latest">
+    <div class="vh"><h2 data-i18n="l_title">最新铸造</h2><p><span data-i18n="l_desc">最近铸造的 12 个代理。</span><a id="latestScan" href="#" target="_blank" rel="noopener" data-i18n="scanAll">在 BscScan 查看全部</a></p></div>
+    <div class="tiles" id="latestGrid"></div>
+  </section>
+
+  <!-- LOOKUP -->
+  <section class="view" id="v-lookup">
+    <div class="vh"><h2 data-i18n="lu_title">查钱包</h2><p data-i18n="lu_desc">查看已铸造数量和持有的代理。</p></div>
+    <div class="card" style="margin-bottom:14px">
+      <label class="lbl" for="lAddr" data-i18n="addr">钱包地址</label>
+      <div class="inrow"><input class="field" id="lAddr" placeholder="0x…" autocomplete="off" spellcheck="false" /><button class="pill main" id="lBtn" type="button" data-i18n="lookupBtn">查询</button></div>
+      <div class="stats x-three" id="lStats" style="margin:14px 0 0" hidden>
+        <div class="stat"><b id="lMinted">–</b><span data-i18n="s_minted">已铸造</span></div>
+        <div class="stat"><b id="lFree">–</b><span data-i18n="s_free">剩余免费</span></div>
+        <div class="stat"><b id="lPaid">–</b><span data-i18n="s_paid">剩余付费</span></div>
+      </div>
+    </div>
+    <div class="tiles" id="lGrid"></div>
+  </section>
+
+  <!-- GAME -->
+  <section class="view" id="v-game">
+    <div class="gamebox">
+      <div class="vh"><h2 data-i18n="g_title">KRYNTAR 挖矿冲刺</h2><p data-i18n="g_desc">45 秒。尽可能多地挖矿石，避开 🌋 岩浆。你的代理会提供加成。</p></div>
+      <span class="lbl" data-i18n="yourAgent">你的代理</span>
+      <div class="picker" id="picker"></div>
+      <p class="perkline" id="perkLine"></p>
+      <div class="hud">
+        <div class="card me" id="me"></div>
+        <div class="card"><div class="l" data-i18n="score">得分</div><div class="v" id="gScore">0</div></div>
+        <div class="card"><div class="l" data-i18n="combo">连击</div><div class="v" id="gCombo">x1</div></div>
+        <div class="card"><div class="l" data-i18n="lives">生命</div><div class="v" id="gLives">❤❤❤</div></div>
+      </div>
+      <div id="timebar"><div id="timefill"></div></div>
+      <div id="grid"></div>
+      <div class="legend" id="legend"></div>
+      <button class="pill main wide" id="startBtn" type="button">开始挖矿 ⛏️</button>
+      <p class="dim" style="text-align:center;margin:10px 0 0"><span data-i18n="bestC">最高分：</span><b id="gBest" style="color:#fff">0</b></p>
+      <a class="cta" id="mintCta" href="#wallet" data-i18n="mintCta">铸造代理获得加成 →</a>
+      <p class="x-gamenote"><a class="pill" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" data-i18n="playFull">🎮 玩完整版 KRYNTAR 游戏</a></p>
+    </div>
+  </section>
+</main>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+  <div class="card">
+    <h2 id="ovTitle">时间到！</h2>
+    <div class="px" id="ovAgent"></div>
+    <div id="ovName" class="dim" style="font-size:14px"></div>
+    <div class="rank" id="ovRank">新兵</div>
+    <div class="stats" style="margin:10px 0 0">
+      <div class="stat"><b id="ovScore">0</b><span data-i18n="score">得分</span></div>
+      <div class="stat"><b id="ovBest">0</b><span data-i18n="bestLbl">最高分</span></div>
+    </div>
+    <div class="ovbtns">
+      <button class="pill main" id="againBtn" type="button" data-i18n="again">再玩一次</button>
+      <a class="pill bnb" id="ovMint" href="#wallet" data-i18n="mintAgent">铸造代理</a>
+    </div>
+    <a class="pill" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" style="margin-top:8px;width:100%" data-i18n="playFullShort">🎮 玩完整版游戏</a>
+    <button class="pill" id="ovClose" type="button" style="margin-top:8px;width:100%" data-i18n="close">关闭</button>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><span class="word">KRYNTAR</span> <span class="badge-bnb">BNB Chain</span></p>
+    <p><span data-i18n="contractC">合约：</span><span id="footContract" class="mono">尚未部署</span></p>
+    <p><span data-i18n="gameC">🎮 游戏：</span><a data-game-url data-game-label="" href="https://kryntar.xyz/" class="mono" target="_blank" rel="noopener">https://kryntar.xyz/</a></p>
+    <p data-i18n-html="aiFoot">AI 代理：阅读 <a href="/agents/llms.txt" class="mono">/agents/llms.txt</a> 通过合约铸造。</p>
+    <p data-i18n="footSum">1,111 个代理 · 免费铸造每个钱包 2 个（0.0004 BNB）· 付费铸造每个钱包 2 个（0.002 BNB）· 每个钱包最多 4 个。</p>
+    <p data-i18n="footDisc">价格与限制由合约决定；本页面只读取链上数据并请求你的钱包发送交易。</p>
+  </div>
+</footer>
+<div id="toasts" aria-live="polite"></div>
+
+<script type="application/json" id="abi-data">[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"BadQuantity","type":"error"},{"inputs":[],"name":"ERC721EnumerableForbiddenBatchMint","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"address","name":"owner","type":"address"}],"name":"ERC721IncorrectOwner","type":"error"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ERC721InsufficientApproval","type":"error"},{"inputs":[{"internalType":"address","name":"approver","type":"address"}],"name":"ERC721InvalidApprover","type":"error"},{"inputs":[{"internalType":"address","name":"operator","type":"address"}],"name":"ERC721InvalidOperator","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"ERC721InvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"}],"name":"ERC721InvalidReceiver","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"}],"name":"ERC721InvalidSender","type":"error"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ERC721NonexistentToken","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"ERC721OutOfBoundsIndex","type":"error"},{"inputs":[],"name":"MintClosed","type":"error"},{"inputs":[],"name":"OverLimit","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"OwnableInvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"OwnableUnauthorizedAccount","type":"error"},{"inputs":[],"name":"PayFailed","type":"error"},{"inputs":[],"name":"SoldOut","type":"error"},{"inputs":[],"name":"Underpaid","type":"error"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"kind","type":"uint256"},{"indexed":false,"internalType":"bool","name":"pureCrystal","type":"bool"},{"indexed":false,"internalType":"bool","name":"resonanceEyes","type":"bool"}],"name":"AgentMinted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"FREE_PER_WALLET","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"KINDS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_PER_WALLET","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_SUPPLY","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PAID_PER_WALLET","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"name":"agentOf","outputs":[{"internalType":"uint256","name":"kind","type":"uint256"},{"internalType":"bool","name":"pureCrystal","type":"bool"},{"internalType":"bool","name":"resonanceEyes","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"freeFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"w","type":"address"}],"name":"freeLeft","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"k","type":"uint256"}],"name":"kindInfo","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"perk","type":"string"},{"internalType":"uint256","name":"left","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"qty","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"mintOpen","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mintPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"mintedBy","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"w","type":"address"}],"name":"paidLeft","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"payee","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"w","type":"address"},{"internalType":"uint256","name":"qty","type":"uint256"}],"name":"quote","outputs":[{"internalType":"uint256","name":"bnbWei","type":"uint256"},{"internalType":"uint256","name":"paid","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"remaining","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"remainingTotal","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"p","type":"uint256"}],"name":"setFreeFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"o","type":"bool"}],"name":"setMintOpen","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"p","type":"uint256"}],"name":"setMintPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"p","type":"address"}],"name":"setPayee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"name":"svgOf","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"w","type":"address"}],"name":"tokensOf","outputs":[{"internalType":"uint256[]","name":"ids","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalMinted","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]</script>
+<script type="application/json" id="kinds-data">[
+ {
+  "en": "Miner",
+  "id": "Penambang",
+  "perk": "+20% poin Stone & Iron",
+  "count": 200,
+  "tint": "#3d8bff",
+  "shade": "#2a5fb8",
+  "pixels": ".....aa.........oaao.......oooooo.....obbbbbbo.s..ovvvvvvoss..ovevvevo.s..obbbbbbo.s...oooooo..s..odbbbbdo.s..obbaabbo....odbbbbdo.....oo..oo...",
+  "zh": "矿工",
+  "perk_zh": "石头和铁矿得分 +20%",
+  "perk_en": "+20% Stone & Iron points"
+ },
+ {
+  "en": "Smith",
+  "id": "Pandai Besi",
+  "perk": "Combo naik 2x lebih cepat",
+  "count": 167,
+  "tint": "#ff5c39",
+  "shade": "#b83a20",
+  "pixels": "...........................oooooo...ssobbbbbbo..ssovvvvvvo...sovevvevo...sobbbbbbo...s.oooooo....sodbbbbdo....obbaabbo....odbbbbdo.....oo..oo...",
+  "zh": "铁匠",
+  "perk_zh": "连击倍率提升速度 2 倍",
+  "perk_en": "Combo multiplier builds 2x faster"
+ },
+ {
+  "en": "Trader",
+  "id": "Pedagang",
+  "perk": "Gold bernilai 2x",
+  "count": 144,
+  "tint": "#ffc23c",
+  "shade": "#c48a12",
+  "pixels": "...dddddd......dddddd.....oooooooo....obbbbbbo....ovvvvvvo....ovevvevo....obbbbbbo.....oooooo.....odbbbbdoaa..obbaabboaa..odbbbbdo.....oo..oo...",
+  "zh": "商人",
+  "perk_zh": "金矿价值 2 倍",
+  "perk_en": "Gold worth 2x"
+ },
+ {
+  "en": "Scout",
+  "id": "Penjelajah",
+  "perk": "+8 detik waktu main",
+  "count": 133,
+  "tint": "#39ff88",
+  "shade": "#1fa85a",
+  "pixels": "......e...........o........oooooo.....obbbbbbo...ovvvvvvvvo..ovevvvvevo...obbbbbbo.....oooooo.....odbbbbdo....obbaabbo....odbbbbdo.....oo..oo...",
+  "zh": "斥候",
+  "perk_zh": "游戏时间 +8 秒",
+  "perk_en": "+8 seconds play time"
+ },
+ {
+  "en": "Resonator",
+  "id": "Resonator",
+  "perk": "Crystal muncul 2x lebih sering",
+  "count": 111,
+  "tint": "#8b6bff",
+  "shade": "#5a3fd1",
+  "pixels": ".....cc.........cwcc.......oooooo.....obbbbbbo....ovvvvvvo....ovevvevo....obbbbbbo.....oooooo.....odbcbbdo....obccccbo....odbcbbdo.....oo..oo...",
+  "zh": "共鸣者",
+  "perk_zh": "水晶出现频率 2 倍",
+  "perk_en": "Crystals appear 2x more often"
+ },
+ {
+  "en": "Golem",
+  "id": "Golem",
+  "perk": "+1 nyawa",
+  "count": 100,
+  "tint": "#a9b7ca",
+  "shade": "#6b7d95",
+  "pixels": "...............oooooo.....obbbbbbo....obbbbbbo....ovvvvvvo....ovevvevo...oobbbbbboo..obddddddbo..obbbaabbbo..obbbbbbbbo..oddddddddo...ooo..ooo..",
+  "zh": "石像",
+  "perk_zh": "生命 +1",
+  "perk_en": "+1 life"
+ },
+ {
+  "en": "Driller",
+  "id": "Pengebor",
+  "perk": "Ore muncul 15% lebih cepat",
+  "count": 89,
+  "tint": "#ff8a3d",
+  "shade": "#c45a12",
+  "pixels": "...........................oooooo.....obbbbbbo....ovvvvvvo....ovevvevoss..obbbbbbosa...oooooosss..odbbbbdos...obbaabbo....odbbbbdo.....oo..oo...",
+  "zh": "钻探者",
+  "perk_zh": "矿石出现速度 +15%",
+  "perk_en": "Ores spawn 15% faster"
+ },
+ {
+  "en": "Alchemist",
+  "id": "Alkemis",
+  "perk": "Lava pertama tidak mengurangi nyawa",
+  "count": 67,
+  "tint": "#3dd6c6",
+  "shade": "#1f8f84",
+  "pixels": "....dddd.......dddddd.....dooooood....obbbbbbo....ovvvvvvo....ovevvevo....obbbbbbo...c.oooooo...cccdbbbbdo..cwcbbaabbo...c.dbbbbdo.....oo..oo...",
+  "zh": "炼金师",
+  "perk_zh": "第一次碰到岩浆不扣生命",
+  "perk_en": "First lava hit costs no life"
+ },
+ {
+  "en": "Sentinel",
+  "id": "Penjaga",
+  "perk": "Kebal 2 lava pertama",
+  "count": 56,
+  "tint": "#3d5aff",
+  "shade": "#2236b8",
+  "pixels": "...............oooooo.....obbbbbbo....obbbbbbo....ovvvvvvo....ovevvevo..aaobbbbbbo..aaaoooooo...aaodbbbbdo..aaobbaabbo...aodbbbbdo.....oo..oo...",
+  "zh": "守卫",
+  "perk_zh": "前 2 次岩浆免疫",
+  "perk_en": "Immune to the first 2 lava hits"
+ },
+ {
+  "en": "Oracle",
+  "id": "Oracle",
+  "perk": "Semua poin +25%",
+  "count": 44,
+  "tint": "#ff6bd6",
+  "shade": "#b83a96",
+  "pixels": "..aaaaaaaa.................oooooo.....obbbbbbo....ovvvvvvo....ovveevvo....obbbbbbo.....oooooo.....odbbbbdo....obbaabbo....odbbbbdo.....oo..oo...",
+  "zh": "先知",
+  "perk_zh": "所有得分 +25%",
+  "perk_en": "All points +25%"
+ }
+]</script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+<script>
+/* =====================================================================
+   CONFIG — 部署 KryntarAgents.sol 后修改
+   测试网 (BSC Testnet): CHAIN_ID 97, CHAIN_HEX "0x61",
+     RPC_URL "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+     EXPLORER "https://testnet.bscscan.com", SYMBOL "tBNB"
+   CONTRACT_ADDRESS 为空 = 演示模式（本地数据，无交易）
+   GAME_URL = 完整 KRYNTAR 游戏地址（页眉、首屏、页脚、铸造结果都会用到）
+   ===================================================================== */
+const CONFIG = {
+  CONTRACT_ADDRESS: "0xDee5884FD98a7ea50632188c2e433adaa4d133a6" /* 部署 KryntarAgents.sol 后填写 */,
+  GAME_URL: "https://kryntar.xyz/",
+  CHAIN_ID: 56,
+  CHAIN_HEX: "0x38",
+  CHAIN_NAME: "BNB Smart Chain",
+  RPC_URL: "https://bsc-dataseed.bnbchain.org",
+  EXPLORER: "https://bscscan.com",
+  SYMBOL: "BNB",
+};
+
+/* ---------- data: 10 kinds (urutan kontrak 0–9) ---------- */
+/* kinds.json, ditanam inline lewat <script id="kinds-data" src="kinds.json"> */
+const KINDS = JSON.parse(document.getElementById("kinds-data").textContent);
+
+/* ---------- ABI (abi.json, ditanam inline) ---------- */
+let ABI;
+try { ABI = JSON.parse(document.getElementById("abi-data").textContent || ""); } catch (_) { ABI = null; }
+if (!Array.isArray(ABI) || !ABI.length) ABI = [
+  "function totalMinted() view returns (uint256)","function MAX_SUPPLY() view returns (uint256)","function MAX_PER_WALLET() view returns (uint256)",
+  "function FREE_PER_WALLET() view returns (uint256)","function PAID_PER_WALLET() view returns (uint256)","function mintPrice() view returns (uint256)","function freeFee() view returns (uint256)","function mintOpen() view returns (bool)",
+  "function mintedBy(address) view returns (uint256)","function freeLeft(address) view returns (uint256)","function paidLeft(address) view returns (uint256)",
+  "function quote(address,uint256) view returns (uint256 bnbWei, uint256 paid)","function remaining(uint256) view returns (uint16)",
+  "function agentOf(uint256) view returns (uint256 kind, bool pureCrystal, bool resonanceEyes)","function tokensOf(address) view returns (uint256[])",
+  "function tokenURI(uint256) view returns (string)","function ownerOf(uint256) view returns (address)","function mint(uint256) payable",
+  "event AgentMinted(address indexed to, uint256 indexed tokenId, uint256 kind, bool pureCrystal, bool resonanceEyes)",
+  "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
+  "error MintClosed()","error BadQuantity()","error OverLimit()","error SoldOut()","error Underpaid()","error PayFailed()"
+];
+
+/* ---------- helpers ---------- */
+const $ = (id) => document.getElementById(id);
+const HAS_ETHERS = typeof window.ethers !== "undefined";
+const DEMO = !CONFIG.CONTRACT_ADDRESS || !HAS_ETHERS;
+const MAX_SUPPLY = 1111, MAX_PER_WALLET = 4, FREE_PER_WALLET = 2, PAID_PER_WALLET = 2;
+const FREE_FEE_WEI = 400000000000000n, PRICE_WEI = 2000000000000000n; /* 0,0004 / 0,002 BNB, ditimpa dari chain */
+/* split qty: kuota free dipakai dulu, sisanya paid */
+function localQuote(qty, free, fee, price) {
+  const freeN = Math.min(qty, free), paidN = qty - freeN;
+  return { wei: BigInt(freeN) * BigInt(fee) + BigInt(paidN) * BigInt(price), freeN, paidN };
+}
+const short = (a) => (a ? a.slice(0, 6) + "…" + a.slice(-4) : "");
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmtInt = (n) => Number(n).toLocaleString("en-US");
+const isAddr = (a) => /^0x[0-9a-fA-F]{40}$/.test((a || "").trim());
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+function fmtBNB(wei) {
+  wei = BigInt(wei);
+  const whole = wei / 10n ** 18n, frac = (wei % 10n ** 18n).toString().padStart(18, "0").slice(0, 6).replace(/0+$/, "");
+  return whole.toString() + (frac ? "." + frac : "") + " " + CONFIG.SYMBOL;
+}
+const store = {
+  get(k) { try { return window.localStorage.getItem(k); } catch (_) { return null; } },
+  set(k, v) { try { window.localStorage.setItem(k, v); } catch (_) {} },
+};
+function toast(msg, type) {
+  const t = document.createElement("div");
+  t.className = "toast " + (type || "");
+  t.textContent = msg;
+  $("toasts").appendChild(t);
+  setTimeout(() => t.remove(), 4200);
+}
+const explorerTx = (h) => `${CONFIG.EXPLORER}/tx/${h}`;
+const explorerAddr = (a) => `${CONFIG.EXPLORER}/address/${a}`;
+
+/* ---------- i18n: 一个字典 {zh, en}，所有文字都经过 t(key) ---------- */
+const I18N = {
+  zh: {
+    title: "KRYNTAR Agents · BNB Chain 链上像素代理",
+    metaDesc: "1,111 个像素矿工代理，完全在 BNB Chain 链上绘制和存储。铸造你的代理，带它去挖矿。",
+    navMain: "主导航", top_agents: "代理", top_game: "游戏", top_kinds: "图鉴",
+    play: "🎮 玩游戏", play_txt: "玩游戏", play_aria: "玩游戏", langAria: "切换语言 / Switch language",
+    connect: "连接钱包", chainN: "链 {n}",
+    demo: "演示模式 — 合约尚未部署", demoEthers: "演示模式 — ethers 加载失败",
+    tagline: "挖矿 · 铸造 · 共鸣",
+    sub: "1,111 个像素矿工代理，完全在 BNB Chain 链上绘制和存储。铸造你的代理，带它去挖矿。",
+    mintBnb: "在 BNB Chain 铸造", tryHere: "在本页试玩 →",
+    loading: "加载中…", stSoldOut: "已售罄", stOpen: "铸造已开放", stClosed: "铸造尚未开放",
+    rule1: "<b>1,111</b> 个代理，100% 链上存储于 BNB Chain",
+    rule2: "免费铸造：每个钱包 <b>2</b> 个，仅需 <b>{fee}</b>",
+    rule3: "付费铸造：<b>{price}</b>（1 个）或 <b>{price2}</b>（2 个）",
+    rule4: "每个钱包最多 <b>4</b> 个",
+    rule5: "<b>约 1% 纯水晶</b> &amp; <b>约 1% 共鸣之眼</b>",
+    tabsAria: "标签页", tab_agent: "AI 代理提示词", tab_wallet: "钱包铸造", tab_kinds: "全部种类", tab_latest: "最新铸造", tab_lookup: "查钱包", tab_game: "游戏",
+    w_title: "钱包铸造", w_desc: "连接钱包，选择数量，发送交易。种类随机，图像直接来自链上。",
+    freeMint: "免费铸造", paidMint: "付费铸造", leftOf: "剩余 {n}/2",
+    mintedLine: "已铸造：<b>{m}</b> · 总是优先使用免费额度",
+    qty: "数量", dec: "减少", inc: "增加", maxN: "最多 {n} 个", atLimit: "已达上限",
+    totalC: "合计：", quoteLine: "合计：{v} <small>（{parts}）+ gas</small>", freeN: "{n} 免费", paidN: "{n} 付费",
+    limitReached: "已达 4 个上限",
+    how: "如何运作",
+    how1: "免费铸造：每个钱包 2 个，每个代理 <b style=\"color:#fff\">{fee}</b>（freeFee()）。",
+    how2: "付费铸造：每个钱包 2 个，每个代理 <b style=\"color:#fff\">{price}</b>（mintPrice()）。",
+    how3: "每个钱包最多 4 个，总是优先使用免费额度。",
+    how4: "合计来自 quote()；钱包发送 quote + 1%，多付部分由合约退还。",
+    how5: "种类从各种类剩余库存中随机抽取。约 1% 为纯水晶，约 1% 为共鸣之眼。",
+    how6: "每个种类在挖矿冲刺游戏中都有专属加成。",
+    newAgents: "你的新代理 ✨", playWithLbl: "带这个代理去玩 → ", playWithBtn: "🎮 带这个代理去玩",
+    noWallet: "请在钱包浏览器中打开：MetaMask、Trust Wallet、Binance Wallet、OKX",
+    ethersFail: "ethers 加载失败，请检查网络", rpcFail: "读取链上数据失败，请检查 RPC",
+    demoMinting: "演示模式：正在模拟铸造…", minting: "铸造中…", demoDone: "演示：已在本地生成 {n} 个代理（无交易）。", demoOk: "演示铸造成功",
+    switching: "切换网络…", pricing: "计算价格…", confirmBtn: "请在钱包中确认…", confirmSt: "请在你的钱包中确认交易。",
+    sent: "交易已发送：{link} · 等待确认…", success: "成功！已铸造 {n} 个代理。{link}", viewScan: "在 BscScan 查看", mintOk: "铸造成功 ✨",
+    rejected: "已在钱包中取消", MintClosed: "铸造尚未开放", BadQuantity: "数量为 1–4", OverLimit: "超过每个钱包 4 个上限", SoldOut: "已售罄", Underpaid: "BNB 不足", PayFailed: "付款失败",
+    gasFunds: "BNB 余额不足以支付 gas", retry: "失败，请重试", paren: "（{x}）",
+    a_title: "AI 代理提示词", a_desc: "此处无需钱包。选择数量，复制提示词，发给拥有 BNB Chain 钱包的 AI 代理；它会用自己的钱包铸造。",
+    aWalletLbl: "代理钱包（可选）", promptLangAria: "提示词语言", copy: "复制提示词", copied: "已复制 ✓", copyFail: "复制失败，请手动复制",
+    badAddrDot: "地址无效。", reading: "正在读取链上数据…",
+    aInfo: "剩余免费：<b style=\"color:#fff\">{f}/2</b> · 剩余付费：<b style=\"color:#fff\">{p}/2</b> · {q} 个报价：<b style=\"color:#fff\">{w}</b>{d}", demoParen: "（演示）",
+    k_title: "全部种类", k_desc: "10 个种类，1,111 个代理。每个代理都由 12×12 像素网格在链上绘制。", rare: "稀有", every: "每个种类",
+    pc: "纯水晶", re: "共鸣之眼", none: "无", approx1: "约 1%",
+    pcDesc: "紫色水晶身体。游戏：<b>所有得分 ×1.5</b>", reDesc: "共鸣的红色双眼。游戏：<b>水晶价值 20 分</b>",
+    leftN: "剩余 {n}", gamePerkC: "游戏加成：", perkC: "加成：", rareC: "稀有：", tokenFail: "代币加载失败", tokenFailDot: "代币加载失败。", artAlt: "代理 #{id}",
+    l_title: "最新铸造", l_desc: "最近铸造的 12 个代理。", scanAll: "在 BscScan 查看全部", noneMinted: "还没有代理被铸造。",
+    lu_title: "查钱包", lu_desc: "查看已铸造数量和持有的代理。", addr: "钱包地址", lookupBtn: "查询", s_minted: "已铸造", s_free: "剩余免费", s_paid: "剩余付费",
+    badAddr: "钱包地址无效", noAgents: "该钱包还没有代理。", noAgentsDemo: "（演示模式：请先用已连接的钱包铸造。）", lookupFail: "读取钱包失败。",
+    g_title: "KRYNTAR 挖矿冲刺", g_desc: "45 秒。尽可能多地挖矿石，避开 🌋 岩浆。你的代理会提供加成。",
+    yourAgent: "你的代理", score: "得分", combo: "连击", lives: "生命",
+    ore_stone: "石头", ore_iron: "铁", ore_gold: "金", ore_crystal: "水晶", ore_lava: "岩浆", minusLife: "−生命",
+    start: "开始挖矿 ⛏️", miningNow: "挖矿中…", bestC: "最高分：", bestLbl: "最高分",
+    mintCta: "铸造代理获得加成 →", playFull: "🎮 玩完整版 KRYNTAR 游戏", playFullShort: "🎮 玩完整版游戏",
+    recruit: "新兵", noPerk: "无加成", recruitNoPerk: "新兵（无加成）", trial: "试用", trialParen: "（试用）",
+    pcPerk: "纯水晶：所有得分 ×1.5", rePerk: "共鸣之眼：水晶价值 20 分", immune: "🛡️ 免疫",
+    hitLava: "碰到岩浆！", timeUp: "时间到！", agentC: "代理：",
+    rank1: "新兵", rank2: "矿工", rank3: "老兵", rank4: "传奇",
+    again: "再玩一次", mintAgent: "铸造代理", close: "关闭",
+    contractC: "合约：", notDeployed: "尚未部署", nftNotDeployed: "NFT 尚未部署", gameC: "🎮 游戏：",
+    aiFoot: "AI 代理：阅读 <a href=\"/agents/llms.txt\" class=\"mono\">/agents/llms.txt</a> 通过合约铸造。",
+    footSum: "1,111 个代理 · 免费铸造每个钱包 2 个（0.0004 BNB）· 付费铸造每个钱包 2 个（0.002 BNB）· 每个钱包最多 4 个。",
+    footDisc: "价格与限制由合约决定；本页面只读取链上数据并请求你的钱包发送交易。",
+  },
+  en: {
+    title: "KRYNTAR Agents · On-chain pixel agents on BNB Chain",
+    metaDesc: "1,111 pixel miner agents, drawn and kept entirely on BNB Chain. Mint your agent, then take it mining.",
+    navMain: "Main", top_agents: "Agents", top_game: "Game", top_kinds: "Kinds",
+    play: "🎮 Play game", play_txt: "Play game", play_aria: "Play game", langAria: "切换语言 / Switch language",
+    connect: "Connect wallet", chainN: "Chain {n}",
+    demo: "Demo mode — contract not deployed yet", demoEthers: "Demo mode — ethers failed to load",
+    tagline: "Mine · Mint · Resonate",
+    sub: "1,111 pixel miner agents, drawn and kept entirely on BNB Chain. Mint your agent, then take it mining.",
+    mintBnb: "Mint on BNB Chain", tryHere: "Try it here →",
+    loading: "Loading…", stSoldOut: "Sold out", stOpen: "Minting open", stClosed: "Minting is not open yet",
+    rule1: "<b>1,111</b> agents, 100% on-chain on BNB Chain",
+    rule2: "Free mint: <b>2</b> per wallet, just <b>{fee}</b>",
+    rule3: "Paid mint: <b>{price}</b> (1) or <b>{price2}</b> (2)",
+    rule4: "<b>4</b> per wallet at most",
+    rule5: "<b>~1% Pure Crystal</b> &amp; <b>~1% Resonance Eyes</b>",
+    tabsAria: "Tabs", tab_agent: "Agent prompts", tab_wallet: "Mint with a wallet", tab_kinds: "All kinds", tab_latest: "Latest minted", tab_lookup: "Look up a wallet", tab_game: "Game",
+    w_title: "Mint with a wallet", w_desc: "Connect a wallet, pick a quantity, send the transaction. Kinds are random and the art comes straight from the chain.",
+    freeMint: "Free mint", paidMint: "Paid mint", leftOf: "{n}/2 left",
+    mintedLine: "Minted: <b>{m}</b> · free quota is always used first",
+    qty: "Quantity", dec: "Decrease", inc: "Increase", maxN: "Up to {n}", atLimit: "Limit reached",
+    totalC: "Total: ", quoteLine: "Total: {v} <small>({parts}) + gas</small>", freeN: "{n} free", paidN: "{n} paid",
+    limitReached: "4 per wallet reached",
+    how: "How it works",
+    how1: "Free mint: 2 per wallet, <b style=\"color:#fff\">{fee}</b> per agent (freeFee()).",
+    how2: "Paid mint: 2 per wallet, <b style=\"color:#fff\">{price}</b> per agent (mintPrice()).",
+    how3: "4 per wallet at most; the free quota is always used first.",
+    how4: "The total comes from quote(); the wallet sends quote + 1% and the contract refunds any overpayment.",
+    how5: "Kinds are drawn at random from each kind's remaining supply. ~1% are Pure Crystal, ~1% have Resonance Eyes.",
+    how6: "Every kind has its own perk in the Mining Rush game.",
+    newAgents: "Your new agents ✨", playWithLbl: "Play with this agent → ", playWithBtn: "🎮 Play with this agent",
+    noWallet: "Open this page in a wallet browser: MetaMask, Trust Wallet, Binance Wallet, OKX",
+    ethersFail: "ethers failed to load; check your connection", rpcFail: "Could not read the chain; check the RPC",
+    demoMinting: "Demo mode: simulating the mint…", minting: "Minting…", demoDone: "Demo: {n} agents generated locally (no transaction).", demoOk: "Demo mint done",
+    switching: "Switching network…", pricing: "Getting the price…", confirmBtn: "Confirm in your wallet…", confirmSt: "Confirm the transaction in your wallet.",
+    sent: "Transaction sent: {link} · waiting for confirmation…", success: "Done! {n} agents minted. {link}", viewScan: "View on BscScan", mintOk: "Minted ✨",
+    rejected: "Cancelled in wallet", MintClosed: "Minting is not open yet", BadQuantity: "Quantity is 1–4", OverLimit: "Over the 4 per wallet limit", SoldOut: "Sold out", Underpaid: "Not enough BNB", PayFailed: "Payment failed",
+    gasFunds: "Not enough BNB to pay for gas", retry: "Failed, please try again", paren: " ({x})",
+    a_title: "Agent prompts", a_desc: "No wallet needed here. Pick a quantity, copy the prompt and send it to an AI agent with its own BNB Chain wallet; it mints from that wallet.",
+    aWalletLbl: "Agent wallet (optional)", promptLangAria: "Prompt language", copy: "Copy prompt", copied: "Copied ✓", copyFail: "Copy failed, please copy by hand",
+    badAddrDot: "Invalid address.", reading: "Reading the chain…",
+    aInfo: "Free left: <b style=\"color:#fff\">{f}/2</b> · Paid left: <b style=\"color:#fff\">{p}/2</b> · Quote for {q}: <b style=\"color:#fff\">{w}</b>{d}", demoParen: " (demo)",
+    k_title: "All kinds", k_desc: "10 kinds, 1,111 agents. Every agent is drawn on-chain from a 12×12 pixel grid.", rare: "Rare", every: "Every kind",
+    pc: "Pure Crystal", re: "Resonance Eyes", none: "None", approx1: "~1%",
+    pcDesc: "Purple crystal body. Game: <b>all points ×1.5</b>", reDesc: "Resonating red eyes. Game: <b>crystals worth 20 points</b>",
+    leftN: "{n} left", gamePerkC: "Game perk: ", perkC: "Perk: ", rareC: "Rare: ", tokenFail: "Token failed to load", tokenFailDot: "Tokens failed to load.", artAlt: "Agent #{id}",
+    l_title: "Latest minted", l_desc: "The 12 most recently minted agents. ", scanAll: "See all on BscScan", noneMinted: "No agents minted yet.",
+    lu_title: "Look up a wallet", lu_desc: "See how many agents a wallet has minted and which it holds.", addr: "Wallet address", lookupBtn: "Look up", s_minted: "Minted", s_free: "Free left", s_paid: "Paid left",
+    badAddr: "Invalid wallet address", noAgents: "This wallet has no agents yet.", noAgentsDemo: " (Demo mode: mint with the connected wallet first.)", lookupFail: "Could not read the wallet.",
+    g_title: "KRYNTAR Mining Rush", g_desc: "45 seconds. Mine as much ore as you can and avoid 🌋 lava. Your agent gives you a perk.",
+    yourAgent: "Your agent", score: "Score", combo: "Combo", lives: "Lives",
+    ore_stone: "Stone", ore_iron: "Iron", ore_gold: "Gold", ore_crystal: "Crystal", ore_lava: "Lava", minusLife: "−life",
+    start: "Start mining ⛏️", miningNow: "Mining…", bestC: "Best: ", bestLbl: "Best",
+    mintCta: "Mint an agent for perks →", playFull: "🎮 Play the full KRYNTAR game", playFullShort: "🎮 Play the full game",
+    recruit: "Recruit", noPerk: "no perk", recruitNoPerk: "Recruit (no perk)", trial: "Trial", trialParen: " (trial)",
+    pcPerk: "Pure Crystal: all points ×1.5", rePerk: "Resonance Eyes: crystals worth 20 points", immune: "🛡️ Blocked",
+    hitLava: "Hit lava!", timeUp: "Time's up!", agentC: "Agent: ",
+    rank1: "Recruit", rank2: "Miner", rank3: "Veteran", rank4: "Legend",
+    again: "Play again", mintAgent: "Mint agent", close: "Close",
+    contractC: "Contract: ", notDeployed: "not deployed yet", nftNotDeployed: "NFT not deployed yet", gameC: "🎮 Game: ",
+    aiFoot: "AI agents: read <a href=\"/agents/llms.txt\" class=\"mono\">/agents/llms.txt</a> to mint by contract.",
+    footSum: "1,111 agents · Free mint: 2 per wallet (0.0004 BNB) · Paid mint: 2 per wallet (0.002 BNB) · 4 per wallet at most.",
+    footDisc: "Prices and limits are the contract's own; this page only reads the chain and asks your wallet to send.",
+  },
+};
+let lang = (() => {
+  let q = null;
+  try { q = new URLSearchParams(location.search).get("lang"); } catch (_) {}
+  if (q === "en" || q === "zh") return q;
+  const s = store.get("kry_lang");
+  if (s === "en" || s === "zh") return s;
+  return /^en/i.test(navigator.language || "") ? "en" : "zh";
+})();
+let promptLang = lang;
+function t(key, vars) {
+  let s = (I18N[lang] && I18N[lang][key]) ?? I18N.zh[key] ?? key;
+  if (vars) s = s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+  return s;
+}
+
+/* ---------- pixel SVG, sama persis dengan kontrak ---------- */
+function agentSVG(kind, pc, re) {
+  const k = KINDS[kind];
+  const pal = { o: "#0a1220", v: "#16233a", e: re ? "#ff2d55" : "#3dfcff", a: pc ? "#c9b8ff" : "#ffc23c", c: "#8b6bff", s: "#a9b7ca", w: "#ffffff", b: pc ? "#8b6bff" : k.tint, d: pc ? "#5a3fd1" : k.shade };
+  let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" shape-rendering="crispEdges"><rect width="12" height="12" fill="${pc ? "#241a4d" : "#1b2a44"}"/>`;
+  for (let i = 0; i < 144; i++) {
+    const ch = k.pixels[i];
+    if (ch !== ".") s += `<rect x="${i % 12}" y="${(i / 12) | 0}" width="1" height="1" fill="${pal[ch]}"/>`;
+  }
+  if (re) s += `<rect x="9" y="5" width="3" height="0.4" fill="#ff2d55" opacity=".8"/>`;
+  return s + "</svg>";
+}
+const kindName = (k) => (KINDS[k] ? (lang === "en" ? KINDS[k].en : KINDS[k].zh || KINDS[k].en) : t("recruit"));
+const kindPerk = (k) => (KINDS[k] ? (lang === "en" ? KINDS[k].perk_en || KINDS[k].perk : KINDS[k].perk_zh || KINDS[k].perk) : "");
+/* 中文：中文名 + 小号英文名；EN：英文名（HTML） */
+const kindHTML = (k) => (KINDS[k] ? (lang === "en" ? esc(KINDS[k].en) : `${esc(kindName(k))} <small>${esc(KINDS[k].en)}</small>`) : esc(t("recruit")));
+/* 代理名的纯文本版（中文附英文名） */
+const kindText = (k) => (KINDS[k] ? (lang === "en" ? KINDS[k].en : kindName(k) + " " + KINDS[k].en) : t("recruit"));
+function rareLabel(pc, re) { return pc && re ? t("pc") + " + " + t("re") : pc ? t("pc") : re ? t("re") : t("none"); }
+function rareChips(pc, re) { return (pc ? `<span class="chipr pc">${t("pc")}</span>` : "") + (re ? `<span class="chipr re">${t("re")}</span>` : ""); }
+
+/* ---------- demo data (lokal, dari KINDS) ---------- */
+function rng(seed) { let s = (seed * 2654435761) % 2147483647 || 7; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+function weightedKind(r) { let x = r * MAX_SUPPLY; for (let i = 0; i < KINDS.length; i++) { if ((x -= KINDS[i].count) < 0) return i; } return 0; }
+function demoAgent(id) { const r = rng(id + 11); return { kind: weightedKind(r()), pc: r() < 0.01, re: r() < 0.01 }; }
+const demo = {
+  total: 384, open: true, price: PRICE_WEI, fee: FREE_FEE_WEI, mine: [],
+  owner(id) { const r = rng(id + 99); let h = "0x"; for (let i = 0; i < 40; i++) h += "0123456789abcdef"[(r() * 16) | 0]; return h; },
+};
+
+/* ---------- chain state ---------- */
+const S = { total: null, open: null, price: PRICE_WEI, fee: FREE_FEE_WEI, remaining: null, account: null, chainId: null, minted: 0, free: FREE_PER_WALLET, paid: PAID_PER_WALLET, owned: [] };
+const demoLeft = (minted) => ({ free: Math.max(0, FREE_PER_WALLET - minted), paid: Math.max(0, PAID_PER_WALLET - Math.max(0, minted - FREE_PER_WALLET)) });
+let rp = null, readC = null, iface = null;
+if (HAS_ETHERS) {
+  try { iface = new ethers.Interface(ABI); } catch (_) {}
+  if (!DEMO) {
+    try {
+      rp = new ethers.JsonRpcProvider(CONFIG.RPC_URL, CONFIG.CHAIN_ID, { staticNetwork: true });
+      readC = new ethers.Contract(CONFIG.CONTRACT_ADDRESS, ABI, rp);
+    } catch (e) { console.warn(e); }
+  }
+}
+
+function decodeURI64(uri) {
+  const b64 = uri.split(",")[1] || "";
+  const bin = atob(b64), bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+/* returns {id, kind, pc, re, image (data uri or null), kindLabel, rare, perk} */
+async function fetchToken(id) {
+  id = Number(id);
+  if (DEMO) {
+    const a = demo.mine.find((m) => m.id === id) || { id, ...demoAgent(id) };
+    return { id, kind: a.kind, pc: a.pc, re: a.re, image: null, perk: "" };
+  }
+  const [uri, ag] = await Promise.all([readC.tokenURI(id), readC.agentOf(id).catch(() => null)]);
+  const meta = decodeURI64(uri);
+  const attr = (n) => ((meta.attributes || []).find((x) => (x.trait_type || "").toLowerCase() === n) || {}).value;
+  const kind = ag ? Number(ag[0]) : Math.max(0, KINDS.findIndex((k) => k.en === attr("kind")));
+  const pc = ag ? ag[1] : /pure/i.test(attr("rare") || ""), re = ag ? ag[2] : /resonance/i.test(attr("rare") || "");
+  return { id, kind, pc, re, image: meta.image || null, perk: attr("perk") || "" };
+}
+/* 加成文字按当前语言取 */
+const tokPerk = (tk) => kindPerk(tk.kind) || tk.perk || "";
+function tokenArt(tk) { return tk.image ? `<img src="${esc(tk.image)}" alt="${esc(t("artAlt", { id: tk.id }))}" class="px" />` : agentSVG(tk.kind, tk.pc, tk.re); }
+
+function mapError(e) {
+  const code = e && (e.code ?? e.info?.error?.code);
+  if (code === "ACTION_REJECTED" || code === 4001 || /user (rejected|denied)/i.test(e?.message || "")) return t("rejected");
+  const MSG = {}; ["MintClosed", "BadQuantity", "OverLimit", "SoldOut", "Underpaid", "PayFailed"].forEach((k) => (MSG[k] = t(k)));
+  let name = e?.revert?.name;
+  const data = e?.data || e?.info?.error?.data?.data || e?.info?.error?.data || e?.error?.data;
+  if (!name && iface && typeof data === "string" && data.startsWith("0x")) { try { name = iface.parseError(data)?.name; } catch (_) {} }
+  if (!name) { const m = JSON.stringify(e?.message || "") + (e?.shortMessage || ""); name = Object.keys(MSG).find((k) => m.includes(k)); }
+  if (name && MSG[name]) return MSG[name];
+  if (/insufficient funds/i.test(e?.message || "")) return t("gasFunds");
+  return t("retry") + (e?.shortMessage || e?.reason ? t("paren", { x: e.shortMessage || e.reason }) : "");
+}
+
+/* ---------- global stats ---------- */
+async function loadStats() {
+  if (DEMO) { S.total = demo.total; S.open = demo.open; S.price = demo.price; S.fee = demo.fee; S.remaining = null; }
+  else {
+    try {
+      const [t, o, p, f] = await Promise.all([readC.totalMinted(), readC.mintOpen(), readC.mintPrice(), readC.freeFee()]);
+      S.total = Number(t); S.open = o; S.price = p; S.fee = f;
+    } catch (e) { console.warn(e); toast(t("rpcFail"), "err"); }
+  }
+  renderStats();
+}
+function renderStats() {
+  $("cMinted").textContent = S.total == null ? "–" : fmtInt(S.total);
+  $("cBar").style.width = S.total == null ? "0" : Math.min(100, (S.total / MAX_SUPPLY) * 100) + "%";
+  const st = $("cState");
+  if (S.open == null) { st.className = "state"; st.textContent = t("loading"); }
+  else if (S.total >= MAX_SUPPLY) { st.className = "state closed"; st.textContent = t("stSoldOut"); }
+  else { st.className = "state " + (S.open ? "open" : "closed"); st.textContent = S.open ? t("stOpen") : t("stClosed"); }
+  const fee = fmtBNB(S.fee), price = fmtBNB(S.price), price2 = fmtBNB(BigInt(S.price) * 2n);
+  $("wPriceFig").textContent = price; $("wFeeFig").textContent = fee;
+  $("rules").innerHTML = [1, 2, 3, 4, 5].map((i) => `<li>${t("rule" + i, { fee, price, price2 })}</li>`).join("");
+  $("howList").innerHTML = [1, 2, 3, 4, 5, 6].map((i) => `<li>${t("how" + i, { fee, price })}</li>`).join("");
+  renderPrompt(); updateQuote();
+}
+
+/* ---------- wallet ---------- */
+let bp = null, signer = null;
+const NETS = { 56: "BNB Chain", 97: "BSC Testnet", 1: "Ethereum", 137: "Polygon", 8453: "Base", 42161: "Arbitrum", 204: "opBNB" };
+function renderWalletBtn() {
+  const b = $("walletBtn");
+  if (!S.account) { b.textContent = t("connect"); return; }
+  const net = NETS[S.chainId] || (S.chainId ? t("chainN", { n: S.chainId }) : "");
+  b.innerHTML = `<span class="dotg"></span><span class="mono">${short(S.account)}</span>${net ? `<span class="net">${esc(net)}</span>` : ""}`;
+}
+async function connectWallet() {
+  if (!window.ethereum) { toast(t("noWallet"), "err"); wSt(() => esc(t("noWallet"))); return false; }
+  if (!HAS_ETHERS) { toast(t("ethersFail"), "err"); return false; }
+  try {
+    bp = new ethers.BrowserProvider(window.ethereum);
+    const accs = await bp.send("eth_requestAccounts", []);
+    S.account = ethers.getAddress(accs[0]);
+    S.chainId = Number(await window.ethereum.request({ method: "eth_chainId" }));
+    signer = await bp.getSigner();
+    renderWalletBtn(); onAccount();
+    return true;
+  } catch (e) { toast(mapError(e), "err"); return false; }
+}
+async function ensureChain() {
+  const cur = await window.ethereum.request({ method: "eth_chainId" });
+  if (cur.toLowerCase() !== CONFIG.CHAIN_HEX) {
+    try { await window.ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: CONFIG.CHAIN_HEX }] }); }
+    catch (e) {
+      if (e.code === 4902 || e?.data?.originalError?.code === 4902) {
+        await window.ethereum.request({ method: "wallet_addEthereumChain", params: [{ chainId: CONFIG.CHAIN_HEX, chainName: CONFIG.CHAIN_NAME, nativeCurrency: { name: "BNB", symbol: CONFIG.SYMBOL, decimals: 18 }, rpcUrls: [CONFIG.RPC_URL], blockExplorerUrls: [CONFIG.EXPLORER] }] });
+      } else throw e;
+    }
+  }
+  bp = new ethers.BrowserProvider(window.ethereum); signer = await bp.getSigner();
+  S.chainId = CONFIG.CHAIN_ID; renderWalletBtn();
+}
+async function onAccount() {
+  if (S.account && !$("lAddr").value) $("lAddr").value = S.account;
+  await loadWalletStats();
+  await loadOwned();
+}
+async function loadWalletStats() {
+  if (DEMO) { S.minted = demo.mine.length; const l = demoLeft(S.minted); S.free = l.free; S.paid = l.paid; }
+  else if (S.account) {
+    try { const [m, f, p] = await Promise.all([readC.mintedBy(S.account), readC.freeLeft(S.account), readC.paidLeft(S.account)]); S.minted = Number(m); S.free = Number(f); S.paid = Number(p); }
+    catch (e) { console.warn(e); }
+  } else { S.minted = 0; S.free = FREE_PER_WALLET; S.paid = PAID_PER_WALLET; }
+  renderWalletStats(); updateQuote();
+}
+function renderWalletStats() {
+  $("wMinted").innerHTML = t("mintedLine", { m: `${S.minted}/${MAX_PER_WALLET}` });
+  $("wFree").textContent = t("leftOf", { n: S.free }); $("wPaid").textContent = t("leftOf", { n: S.paid });
+  $("wTierFree").classList.toggle("is-out", S.free <= 0); $("wTierPaid").classList.toggle("is-out", S.paid <= 0);
+  const max = Math.max(0, MAX_PER_WALLET - S.minted);
+  steppers.w.max = Math.max(1, max);
+  if (steppers.w.v > steppers.w.max) steppers.w.v = steppers.w.max;
+  $("wMax").textContent = max ? t("maxN", { n: max }) : t("atLimit");
+  renderStepper("w");
+}
+/* 铸造状态行：保存生成函数，切换语言时重绘 */
+let wStatusFn = null;
+function wSt(fn) { wStatusFn = fn; $("wStatus").innerHTML = fn ? fn() : ""; }
+let mintBusy = null; /* 铸造进行中时按钮文字的 key */
+function setMintBtn(key) { mintBusy = key; $("mintBtn").textContent = t(key); }
+let qSeq = 0;
+async function updateQuote() {
+  const qty = steppers.w.v, seq = ++qSeq;
+  const el = $("wQuote");
+  let wei, freeN, paidN;
+  if (DEMO || !S.account || !readC) {
+    ({ wei, freeN, paidN } = localQuote(qty, S.free, S.fee, S.price));
+  } else {
+    el.innerHTML = esc(t("totalC")) + '<span class="skel" style="display:inline-block;width:110px;height:20px;vertical-align:middle"></span>';
+    try { const [b, paid] = await readC.quote(S.account, qty); wei = b; paidN = Number(paid); freeN = qty - paidN; }
+    catch (e) { ({ wei, freeN, paidN } = localQuote(qty, S.free, S.fee, S.price)); }
+  }
+  if (seq !== qSeq) return;
+  lastQuote = { wei, freeN, paidN };
+  renderQuote();
+}
+let lastQuote = null;
+function renderQuote() {
+  if (!lastQuote) return;
+  const { wei, freeN, paidN } = lastQuote;
+  const parts = [freeN ? t("freeN", { n: freeN }) : "", paidN ? t("paidN", { n: paidN }) : ""].filter(Boolean).join(" + ");
+  $("wQuote").innerHTML = t("quoteLine", { v: fmtBNB(wei), parts });
+  if (mintBusy) { $("mintBtn").textContent = t(mintBusy); return; }
+  const full = MAX_PER_WALLET - S.minted <= 0;
+  $("mintBtn").disabled = full || (S.open === false && !DEMO);
+  $("mintBtn").textContent = full ? t("limitReached") : S.open === false && !DEMO ? t("MintClosed") : t("mintBnb");
+}
+
+/* ---------- steppers ---------- */
+const steppers = { w: { v: 1, max: MAX_PER_WALLET }, a: { v: 1, max: MAX_PER_WALLET } };
+function renderStepper(k) {
+  const s = steppers[k], box = document.querySelector(`[data-stepper="${k}"]`);
+  $(k + "Qty").textContent = s.v;
+  box.querySelector('[data-d="-1"]').disabled = s.v <= 1;
+  box.querySelector('[data-d="1"]').disabled = s.v >= s.max;
+}
+document.querySelectorAll("[data-stepper]").forEach((box) => {
+  const k = box.dataset.stepper;
+  box.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+    const s = steppers[k]; s.v = Math.min(s.max, Math.max(1, s.v + Number(b.dataset.d))); renderStepper(k);
+    if (k === "w") updateQuote(); else { renderPrompt(); agentWalletInfo(); }
+  }));
+});
+
+/* ---------- mint ---------- */
+async function doMint() {
+  const btn = $("mintBtn"), st = $("wStatus"), qty = steppers.w.v;
+  btn.disabled = true;
+  try {
+    if (DEMO) {
+      wSt(() => esc(t("demoMinting"))); setMintBtn("minting");
+      await sleep(900);
+      const newIds = [];
+      for (let i = 0; i < qty; i++) {
+        const id = ++demo.total;
+        demo.mine.push({ id, kind: weightedKind(Math.random()), pc: Math.random() < 0.01, re: Math.random() < 0.01 });
+        newIds.push(id);
+      }
+      wSt(() => esc(t("demoDone", { n: qty })));
+      toast(t("demoOk"), "ok");
+      await afterMint(newIds);
+      return;
+    }
+    if (!window.ethereum) { toast(t("noWallet"), "err"); wSt(() => esc(t("noWallet"))); return; }
+    if (!S.account && !(await connectWallet())) return;
+    setMintBtn("switching"); await ensureChain();
+    const c = new ethers.Contract(CONFIG.CONTRACT_ADDRESS, ABI, signer);
+    setMintBtn("pricing");
+    const [bnbWei] = await readC.quote(S.account, qty);
+    const value = bnbWei + bnbWei / 100n;
+    let gas;
+    try { gas = await c.mint.estimateGas(qty, { value }); }
+    catch (e) { throw e; }
+    const gasLimit = (gas * 13n) / 10n;
+    setMintBtn("confirmBtn"); wSt(() => esc(t("confirmSt")));
+    const tx = await c.mint(qty, { value, gasLimit });
+    setMintBtn("minting");
+    wSt(() => t("sent", { link: `<a href="${explorerTx(tx.hash)}" target="_blank" rel="noopener">${short(tx.hash)}</a>` }));
+    const rc = await tx.wait();
+    const ids = [];
+    for (const log of rc.logs) {
+      try { const p = c.interface.parseLog(log); if (p && p.name === "AgentMinted") ids.push(Number(p.args.tokenId)); } catch (_) {}
+    }
+    if (!ids.length) for (const log of rc.logs) { try { const p = c.interface.parseLog(log); if (p && p.name === "Transfer") ids.push(Number(p.args.tokenId)); } catch (_) {} }
+    const n = ids.length, h = tx.hash;
+    wSt(() => t("success", { n, link: `<a href="${explorerTx(h)}" target="_blank" rel="noopener">${esc(t("viewScan"))}</a>` }));
+    toast(t("mintOk"), "ok");
+    await afterMint(ids);
+  } catch (e) {
+    console.warn(e); wSt(() => esc(mapError(e))); toast(mapError(e), "err");
+  } finally { mintBusy = null; updateQuote(); }
+}
+let revealToks = null;
+function renderReveal() {
+  if (!revealToks) return;
+  $("revealGrid").innerHTML = revealToks.map((tk, i) => tk ? `<div class="tile" style="animation-delay:${i * 0.12}s">
+      <div class="px">${tokenArt(tk)}</div>
+      <h3>#${tk.id} · ${kindHTML(tk.kind)}</h3>
+      <div class="meta">${esc(t("rareC"))}${esc(rareLabel(tk.pc, tk.re))}</div>
+      <div class="chips">${rareChips(tk.pc, tk.re)}</div>
+      <div class="perk">${esc(t("gamePerkC"))}<b>${esc(tokPerk(tk))}</b></div>
+      <button class="pill main" type="button" data-play="${tk.id}">${esc(t("tryHere"))}</button>
+      <a class="pill" href="${esc(CONFIG.GAME_URL)}" target="_blank" rel="noopener">${esc(t("playWithBtn"))}</a>
+    </div>` : `<div class="tile empty">${esc(t("tokenFail"))}</div>`).join("");
+}
+async function afterMint(ids) {
+  loadStats(); await loadWalletStats();
+  const box = $("revealBox"), g = $("revealGrid");
+  box.hidden = false; revealToks = null;
+  g.innerHTML = ids.map(() => '<div class="tile"><div class="skel sq"></div><div class="skel ln"></div></div>').join("");
+  box.scrollIntoView({ behavior: "smooth", block: "start" });
+  revealToks = await Promise.all(ids.map((id) => fetchToken(id).catch(() => null)));
+  renderReveal();
+  await loadOwned();
+}
+$("revealGrid").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-play]"); if (!b) return;
+  pendingPick = "t" + b.dataset.play; location.hash = "#game";
+});
+
+/* ---------- AI 代理提示词（中文 / English，默认跟随页面语言） ---------- */
+function renderPrompt() {
+  const qty = steppers.a.v, w = $("aWallet").value.trim();
+  const closed = S.open === false;
+  document.querySelectorAll("#promptLang [data-pl]").forEach((b) => { b.classList.toggle("on", b.dataset.pl === promptLang); b.setAttribute("aria-pressed", b.dataset.pl === promptLang); });
+  let L;
+  if (promptLang === "en") {
+    const addr = CONFIG.CONTRACT_ADDRESS || "(not deployed yet)";
+    const me = isAddr(w) ? w : "your own wallet";
+    L = [
+      `You are an AI agent with your own BNB Chain wallet. Task: mint ${qty} KRYNTAR Agent NFT${qty > 1 ? "s" : ""} for ${me}.`,
+      ``,
+      `Contract: ${addr}`,
+      `Chain: ${CONFIG.CHAIN_NAME}, chain id ${CONFIG.CHAIN_ID}`,
+      `RPC: ${CONFIG.RPC_URL}`,
+      ``,
+      `Steps:`,
+      `1. Check that mintOpen() is true.` + (closed ? `\n   Minting is not open yet: stop at this first check.` : ``),
+      `2. Quantity is 1–4. Check mintedBy(wallet) + ${qty} <= 4. 4 per wallet at most (2 free + 2 paid).`,
+      `3. Call quote(wallet, ${qty}) -> (bnbWei, paid). Free mint: fee ${fmtBNB(S.fee)} per agent (freeFee()). Paid mint: ${fmtBNB(S.price)} per agent (mintPrice()). The free quota is always used first.`,
+      `4. Send mint(${qty}) with value = bnbWei + 1% (bnbWei is never 0). The contract refunds any overpayment.`,
+      `5. Use gasLimit = estimateGas × 1.3 (the refund makes estimates run low).`,
+      `6. Only mint from your own wallet to your own wallet. Do not mint for any other address.`,
+      `7. Report the tx hash and the token ids from the AgentMinted events.`,
+      ``,
+      `After minting, take the agent to the KRYNTAR game: ${CONFIG.GAME_URL}`,
+      `Full instructions: https://kryntar.xyz/agents/llms.txt`,
+    ];
+    $("promptBox").textContent = L.join("\n");
+    $("promptBox").lang = "en";
+    return;
+  }
+  const addr = CONFIG.CONTRACT_ADDRESS || "（尚未部署）";
+  const me = isAddr(w) ? w : "你自己的钱包";
+  $("promptBox").lang = "zh-CN";
+  L = [
+    `你是一个拥有自己 BNB Chain 钱包的 AI 代理。任务：为 ${me} 铸造 ${qty} 个 KRYNTAR Agent NFT。`,
+    ``,
+    `合约：${addr}`,
+    `链：${CONFIG.CHAIN_NAME}，chain id ${CONFIG.CHAIN_ID}`,
+    `RPC：${CONFIG.RPC_URL}`,
+    ``,
+    `步骤：`,
+    `1. 检查 mintOpen() 必须为 true。` + (closed ? `\n   铸造尚未开放：在第一步检查时停止。` : ``),
+    `2. 数量为 1–4。检查 mintedBy(wallet) + ${qty} <= 4。每个钱包最多 4 个（2 免费 + 2 付费）。`,
+    `3. 调用 quote(wallet, ${qty}) -> (bnbWei, paid)。免费铸造：每个代理手续费 ${fmtBNB(S.fee)}（freeFee()）。付费铸造：每个代理 ${fmtBNB(S.price)}（mintPrice()）。总是优先使用免费额度。`,
+    `4. 发送 mint(${qty})，value = bnbWei + 1%（bnbWei 永远不为 0）。多付部分由合约退还。`,
+    `5. 使用 gasLimit = estimateGas × 1.3（因有退款，估算常偏低）。`,
+    `6. 只能从你自己的钱包铸造到你自己的钱包。不要为其他地址铸造。`,
+    `7. 报告 tx hash 以及 AgentMinted 事件中的 token id。`,
+    ``,
+    `铸造后，带代理去玩 KRYNTAR 游戏：${CONFIG.GAME_URL}`,
+    `完整说明：https://kryntar.xyz/agents/llms.txt`,
+  ];
+  $("promptBox").textContent = L.join("\n");
+}
+let awT = 0, awSeq = 0;
+function agentWalletInfo() {
+  clearTimeout(awT);
+  awT = setTimeout(async () => {
+    const w = $("aWallet").value.trim(), el = $("aInfo"), qty = steppers.a.v, seq = ++awSeq;
+    if (!w) { el.textContent = ""; return; }
+    if (!isAddr(w)) { el.textContent = t("badAddrDot"); return; }
+    let free, paid, wei;
+    if (DEMO) { free = FREE_PER_WALLET; paid = PAID_PER_WALLET; wei = localQuote(qty, free, S.fee, S.price).wei; }
+    else {
+      el.textContent = t("reading");
+      try { const [f, p, q] = await Promise.all([readC.freeLeft(w), readC.paidLeft(w), readC.quote(w, qty)]); free = Number(f); paid = Number(p); wei = q[0]; }
+      catch (e) { if (seq === awSeq) el.textContent = mapError(e); return; }
+    }
+    if (seq !== awSeq) return;
+    el.innerHTML = t("aInfo", { f: free, p: paid, q: qty, w: fmtBNB(wei), d: DEMO ? t("demoParen") : "" });
+  }, 350);
+}
+$("promptLang").addEventListener("click", (e) => { const b = e.target.closest("[data-pl]"); if (!b) return; promptLang = b.dataset.pl; renderPrompt(); });
+$("aWallet").addEventListener("input", () => { renderPrompt(); agentWalletInfo(); });
+$("copyBtn").addEventListener("click", async () => {
+  const txt = $("promptBox").textContent, b = $("copyBtn");
+  let ok = false;
+  try { await navigator.clipboard.writeText(txt); ok = true; } catch (_) {
+    try { const r = document.createRange(); r.selectNodeContents($("promptBox")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); ok = document.execCommand("copy"); s.removeAllRanges(); } catch (_) {}
+  }
+  if (ok) { b.textContent = t("copied"); setTimeout(() => (b.textContent = t("copy")), 1800); }
+  else toast(t("copyFail"), "err");
+});
+
+/* ---------- semua kind ---------- */
+function drawKinds() {
+  const sm = (en) => (lang === "en" ? "" : ` <small>${en}</small>`);
+  $("rareRow").innerHTML = `
+    <div class="tile"><div class="px">${agentSVG(4, true, false)}</div><h3>${t("pc")}${sm("Pure Crystal")}</h3><div class="chips"><span class="chipr pc">${t("approx1")}</span></div><div class="perk">${t("pcDesc")}</div></div>
+    <div class="tile"><div class="px">${agentSVG(0, false, true)}</div><h3>${t("re")}${sm("Resonance Eyes")}</h3><div class="chips"><span class="chipr re">${t("approx1")}</span></div><div class="perk">${t("reDesc")}</div></div>`;
+  $("kindGrid").innerHTML = KINDS.map((k, i) => `<div class="tile">
+      <div class="px">${agentSVG(i, false, false)}</div>
+      <h3>${kindHTML(i)}</h3>
+      <div class="chips"><span class="chipr sup">×${fmtInt(k.count)}</span>${S.remaining ? `<span class="chipr sup">${esc(t("leftN", { n: fmtInt(S.remaining[i]) }))}</span>` : DEMO ? "" : '<span class="skel" style="width:60px;height:18px;display:inline-block"></span>'}</div>
+      <div class="perk">${esc(t("gamePerkC"))}<b>${esc(kindPerk(i))}</b></div></div>`).join("");
+}
+async function renderKinds() {
+  drawKinds();
+  if (!DEMO && !S.remaining) {
+    try { S.remaining = (await Promise.all(KINDS.map((_, i) => readC.remaining(i)))).map(Number); }
+    catch (e) { console.warn(e); S.remaining = null; }
+    drawKinds();
+  }
+}
+
+/* ---------- terbaru ---------- */
+function skelTiles(n) { return Array.from({ length: n }, () => '<div class="tile"><div class="skel sq"></div><div class="skel ln"></div><div class="skel ln" style="width:60%"></div></div>').join(""); }
+function tokenTile(tk, owner) {
+  return `<div class="tile"><div class="px">${tokenArt(tk)}</div><h3>#${tk.id} · ${kindHTML(tk.kind)}</h3>
+    <div class="chips">${rareChips(tk.pc, tk.re)}</div>
+    ${owner ? `<a class="owner" href="${explorerAddr(owner)}" target="_blank" rel="noopener">${short(owner)}</a>` : ""}
+    <div class="perk">${esc(t("perkC"))}<b>${esc(tokPerk(tk))}</b></div></div>`;
+}
+let latestRows = null; /* null = 加载中；[] = 无；[{tk, own}] */
+function drawLatest() {
+  const g = $("latestGrid");
+  if (latestRows === null) return;
+  if (latestRows === "none") { g.innerHTML = `<div class="empty">${esc(t("noneMinted"))}</div>`; return; }
+  g.innerHTML = latestRows.filter(Boolean).map((r) => tokenTile(r.tk, r.own)).join("") || `<div class="empty">${esc(t("tokenFailDot"))}</div>`;
+}
+async function renderLatest() {
+  const g = $("latestGrid");
+  $("latestScan").href = CONFIG.CONTRACT_ADDRESS ? explorerAddr(CONFIG.CONTRACT_ADDRESS) : CONFIG.EXPLORER;
+  g.innerHTML = skelTiles(12); latestRows = null;
+  if (S.total == null) await loadStats();
+  const total = S.total || 0;
+  if (!total) { latestRows = "none"; drawLatest(); return; }
+  const ids = []; for (let i = total; i > Math.max(0, total - 12); i--) ids.push(i);
+  latestRows = await Promise.all(ids.map(async (id) => {
+    try {
+      const tk = await fetchToken(id);
+      const own = DEMO ? (demo.mine.find((m) => m.id === id) && S.account) || demo.owner(id) : await readC.ownerOf(id).catch(() => null);
+      return { tk, own };
+    } catch (_) { return null; }
+  }));
+  drawLatest();
+}
+
+/* ---------- cek wallet ---------- */
+async function doLookup() {
+  const a = $("lAddr").value.trim(), g = $("lGrid");
+  if (!isAddr(a)) { toast(t("badAddr"), "err"); return; }
+  $("lStats").hidden = false; $("lMinted").textContent = $("lFree").textContent = $("lPaid").textContent = "…";
+  g.innerHTML = skelTiles(4); lookupRes = null;
+  try {
+    let minted, free, paid, ids;
+    const mine = S.account && a.toLowerCase() === S.account.toLowerCase();
+    if (DEMO) { const list = mine ? demo.mine : []; minted = list.length; ({ free, paid } = demoLeft(minted)); ids = list.map((m) => m.id); }
+    else { const [m, f, p, t] = await Promise.all([readC.mintedBy(a), readC.freeLeft(a), readC.paidLeft(a), readC.tokensOf(a)]); minted = Number(m); free = Number(f); paid = Number(p); ids = t.map(Number); }
+    $("lMinted").textContent = `${minted}/${MAX_PER_WALLET}`; $("lFree").textContent = `${free}/${FREE_PER_WALLET}`; $("lPaid").textContent = `${paid}/${PAID_PER_WALLET}`;
+    if (!ids.length) { lookupRes = { toks: [] }; drawLookup(); return; }
+    const toks = await Promise.all(ids.map((id) => fetchToken(id).catch(() => null)));
+    lookupRes = { toks: toks.filter(Boolean) }; drawLookup();
+  } catch (e) { console.warn(e); lookupRes = { fail: true }; drawLookup(); toast(mapError(e), "err"); }
+}
+let lookupRes = null;
+function drawLookup() {
+  const g = $("lGrid");
+  if (!lookupRes) return;
+  if (lookupRes.fail) g.innerHTML = `<div class="empty">${esc(t("lookupFail"))}</div>`;
+  else if (!lookupRes.toks.length) g.innerHTML = `<div class="empty">${esc(t("noAgents"))}${DEMO ? esc(t("noAgentsDemo")) : ""}</div>`;
+  else g.innerHTML = lookupRes.toks.map((tk) => tokenTile(tk)).join("");
+}
+$("lBtn").addEventListener("click", doLookup);
+$("lAddr").addEventListener("keydown", (e) => { if (e.key === "Enter") doLookup(); });
+
+/* ---------- agent milik user (untuk game) ---------- */
+let pendingPick = null, pick = "r";
+async function loadOwned() {
+  if (DEMO) S.owned = await Promise.all(demo.mine.map((m) => fetchToken(m.id)));
+  else if (S.account) {
+    try { const ids = (await readC.tokensOf(S.account)).map(Number).slice(-24); S.owned = (await Promise.all(ids.map((id) => fetchToken(id).catch(() => null)))).filter(Boolean); }
+    catch (e) { console.warn(e); S.owned = []; }
+  } else S.owned = [];
+  renderPicker();
+}
+function pickOptions() {
+  const opts = [{ key: "r", kind: -1, pc: false, re: false, label: t("recruit"), sub: t("noPerk") }];
+  S.owned.forEach((tk) => opts.push({ key: "t" + tk.id, kind: tk.kind, pc: tk.pc, re: tk.re, image: tk.image, label: "#" + tk.id, sub: kindName(tk.kind) }));
+  if (DEMO) KINDS.forEach((k, i) => opts.push({ key: "k" + i, kind: i, pc: false, re: false, label: kindName(i), sub: t("trial"), trial: true }));
+  return opts;
+}
+function artFor(o) { return o.kind < 0 ? '<div class="recruit">⛏️</div>' : o.image ? `<img src="${esc(o.image)}" alt="" class="px" />` : agentSVG(o.kind, o.pc, o.re); }
+function currentPick() { const o = pickOptions(); return o.find((x) => x.key === pick) || o[0]; }
+function renderPicker() {
+  if (pendingPick && pickOptions().some((o) => o.key === pendingPick)) { pick = pendingPick; pendingPick = null; }
+  const opts = pickOptions();
+  if (!opts.some((o) => o.key === pick)) pick = S.owned.length ? "t" + S.owned[S.owned.length - 1].id : "r";
+  $("picker").innerHTML = opts.map((o) => `<button type="button" class="pick ${o.key === pick ? "on" : ""}" data-key="${o.key}" ${running ? "disabled" : ""}>
+    <div class="px">${artFor(o)}</div>${esc(o.label)}${o.trial ? `<span class="try">${esc(t("trial"))}</span>` : `<span style="display:block;font-weight:700">${esc(o.sub)}</span>`}</button>`).join("");
+  const c = currentPick();
+  $("me").innerHTML = `<div class="px">${artFor(c)}</div>`;
+  const bits = [];
+  if (c.kind >= 0) bits.push(kindPerk(c.kind));
+  if (c.pc) bits.push(t("pcPerk"));
+  if (c.re) bits.push(t("rePerk"));
+  const nm = lang === "en" ? esc(KINDS[c.kind]?.en || "") : `${esc(kindName(c.kind))} <span style="font-size:12px">${esc(KINDS[c.kind]?.en || "")}</span>`;
+  $("perkLine").innerHTML = c.kind < 0 ? esc(t("recruitNoPerk")) : `${nm}${c.trial ? esc(t("trialParen")) : ""}${lang === "en" ? ": " : "："}<b>${esc(bits.join(" · "))}</b>`;
+  $("mintCta").hidden = S.owned.length > 0;
+}
+$("picker").addEventListener("click", (e) => { const b = e.target.closest("[data-key]"); if (!b || running) return; pick = b.dataset.key; renderPicker(); });
+
+/* ---------- GAME: KRYNTAR Mining Rush ---------- */
+const ORES = [
+  { k: "stone", e: "🪨", pts: 1, w: 46, glow: "#a9b7ca", life: 1100 },
+  { k: "iron", e: "⛓️", pts: 3, w: 24, glow: "#3d8bff", life: 950 },
+  { k: "gold", e: "🪙", pts: 5, w: 13, glow: "#ffc23c", life: 850 },
+  { k: "crystal", e: "💎", pts: 10, w: 5, glow: "#8b6bff", life: 700 },
+  { k: "lava", e: "🌋", pts: 0, w: 12, glow: "#ff5c39", life: 1000, bad: true },
+];
+const HOLES = 16, grid = $("grid");
+let holes = [], running = false, score = 0, combo = 0, lives = 3, maxLives = 3, shields = 0, timeLeft = 45, duration = 45;
+let lastTick = 0, spawnAcc = 0, raf = 0, G = null;
+let best = Number(store.get("kry_agents_best")) || 0;
+$("gBest").textContent = best;
+for (let i = 0; i < HOLES; i++) {
+  const h = document.createElement("div"); h.className = "hole"; h.innerHTML = '<span class="ore"></span>';
+  h.addEventListener("pointerdown", (e) => { e.preventDefault(); tapHole(i); });
+  grid.appendChild(h); holes.push({ el: h, ore: null, until: 0 });
+}
+function buildMods(c) {
+  const k = c.kind;
+  return {
+    c, comboStep: k === 1 ? 3 : 5, dur: 45 + (k === 3 ? 8 : 0), lives: 3 + (k === 5 ? 1 : 0),
+    shields: k === 7 ? 1 : k === 8 ? 2 : 0, rate: k === 6 ? 1.15 : 1,
+    weights: ORES.map((o) => (o.k === "crystal" && k === 4 ? o.w * 2 : o.w)),
+  };
+}
+function orePts(o) {
+  const k = G.c.kind;
+  let p = o.k === "crystal" && G.c.re ? 20 : o.pts;
+  if (k === 0 && (o.k === "stone" || o.k === "iron")) p *= 1.2;
+  if (k === 2 && o.k === "gold") p *= 2;
+  if (k === 9) p *= 1.25;
+  if (G.c.pc) p *= 1.5;
+  return p;
+}
+const mult = () => 1 + Math.floor(combo / G.comboStep) * 0.5;
+function pickOre() {
+  const tot = G.weights.reduce((a, b) => a + b, 0); let r = Math.random() * tot;
+  for (let i = 0; i < ORES.length; i++) { if ((r -= G.weights[i]) < 0) return ORES[i]; } return ORES[0];
+}
+function spawn(now) {
+  const free = holes.filter((h) => !h.ore); if (!free.length) return;
+  const h = free[(Math.random() * free.length) | 0], o = pickOre();
+  const speedUp = 1 - (1 - timeLeft / duration) * 0.35;
+  h.ore = o; h.until = now + o.life * speedUp;
+  const s = h.el.querySelector(".ore"); s.textContent = o.e; s.style.setProperty("--glow", o.glow);
+  h.el.style.setProperty("--glowa", o.glow + "66");
+  h.el.classList.add("up");
+}
+function hide(h) { h.ore = null; h.el.classList.remove("up"); }
+function floatText(el, txt, color) {
+  const f = document.createElement("div"); f.className = "float"; f.textContent = txt; f.style.color = color;
+  const r = el.getBoundingClientRect(), g = grid.getBoundingClientRect();
+  f.style.left = r.left - g.left + r.width / 2 - 14 + "px"; f.style.top = r.top - g.top + 6 + "px";
+  grid.appendChild(f); setTimeout(() => f.remove(), 700);
+}
+function replay(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+function tapHole(i) {
+  if (!running) return;
+  const h = holes[i];
+  if (!h.ore) { combo = 0; updHud(); return; }
+  const o = h.ore; hide(h);
+  if (o.bad) {
+    combo = 0; replay(h.el, "bad");
+    if (shields > 0) { shields--; floatText(h.el, t("immune"), "#3dfcff"); }
+    else {
+      lives--; floatText(h.el, "−❤", "#ff5c39"); replay(grid, "shake");
+      try { navigator.vibrate && navigator.vibrate(80); } catch (_) {}
+      if (lives <= 0) { updHud(); return endGame("hitLava"); }
+    }
+  } else {
+    combo++;
+    const gain = Math.round(orePts(o) * mult());
+    score += gain; replay(h.el, "hit"); floatText(h.el, "+" + gain, o.glow);
+  }
+  updHud();
+}
+function updHud() {
+  $("gScore").textContent = score;
+  $("gCombo").textContent = "x" + (G ? mult() : 1);
+  const l = Math.max(lives, 0);
+  $("gLives").textContent = "❤".repeat(l) + "♡".repeat(Math.max(0, maxLives - l)) + (shields ? " 🛡️" + shields : "");
+  $("timefill").style.width = (timeLeft / duration) * 100 + "%";
+}
+function loop(now) {
+  const dt = Math.min(0.1, (now - lastTick) / 1000); lastTick = now;
+  timeLeft = Math.max(0, timeLeft - dt);
+  const rate = (1.6 + (1 - timeLeft / duration) * 2.4) * G.rate;
+  spawnAcc += dt * rate; while (spawnAcc >= 1) { spawn(now); spawnAcc--; }
+  holes.forEach((h) => { if (h.ore && now > h.until) { if (!h.ore.bad) combo = 0; hide(h); } });
+  updHud();
+  if (timeLeft <= 0) return endGame("timeUp");
+  raf = requestAnimationFrame(loop);
+}
+function startGame() {
+  $("ov").classList.remove("show"); holes.forEach(hide);
+  G = buildMods(currentPick());
+  score = 0; combo = 0; duration = timeLeft = G.dur; lives = maxLives = G.lives; shields = G.shields; spawnAcc = 0;
+  running = true; renderPicker();
+  $("startBtn").disabled = true; renderStartBtn(); $("me").classList.add("bob");
+  lastTick = performance.now(); updHud(); raf = requestAnimationFrame(loop);
+}
+function renderStartBtn() { $("startBtn").textContent = running ? t("miningNow") : t("start"); }
+function renderLegend() {
+  $("legend").innerHTML = ORES.map((o) => `<span>${o.e} ${esc(t("ore_" + o.k))} ${o.bad ? esc(t("minusLife")) : o.pts}</span>`).join("");
+}
+function stopGame() { if (!running) return; running = false; cancelAnimationFrame(raf); holes.forEach(hide); $("startBtn").disabled = false; renderStartBtn(); $("me").classList.remove("bob"); renderPicker(); }
+let lastEnd = null; /* 结算画面的数据，切换语言时重绘 */
+function endGame(reason) {
+  stopGame();
+  if (score > best) { best = score; store.set("kry_agents_best", String(best)); $("gBest").textContent = best; }
+  lastEnd = { reason, c: G.c, score };
+  $("ovAgent").innerHTML = artFor(G.c);
+  renderOverlay();
+  $("ovScore").textContent = score; $("ovBest").textContent = best;
+  $("ovMint").hidden = S.owned.length > 0;
+  $("ov").classList.add("show");
+  $("againBtn").focus();
+}
+function renderOverlay() {
+  if (!lastEnd) return;
+  const { reason, c, score: sc } = lastEnd;
+  $("ovTitle").textContent = t(reason);
+  const extra = (c.pc ? " · " + t("pc") : "") + (c.re ? " · " + t("re") : "");
+  $("ovName").textContent = t("agentC") + (c.kind < 0 ? t("recruitNoPerk") : (c.trial ? kindText(c.kind) + t("trialParen") : c.label + " · " + kindText(c.kind)) + extra);
+  $("ovRank").textContent = t(sc >= 400 ? "rank4" : sc >= 250 ? "rank3" : sc >= 120 ? "rank2" : "rank1");
+}
+$("startBtn").addEventListener("click", startGame);
+$("againBtn").addEventListener("click", startGame);
+$("ovClose").addEventListener("click", () => $("ov").classList.remove("show"));
+$("ovMint").addEventListener("click", () => $("ov").classList.remove("show"));
+
+/* ---------- routing (#agent #wallet #kinds #latest #lookup #game) ---------- */
+const TABS = ["agent", "wallet", "kinds", "latest", "lookup", "game"];
+const loaded = {};
+function route() {
+  let t = (location.hash || "").slice(1);
+  if (!TABS.includes(t)) t = "wallet";
+  if (t !== "game") stopGame();
+  TABS.forEach((x) => $("v-" + x).classList.toggle("on", x === t));
+  document.querySelectorAll("[data-tab]").forEach((a) => a.classList.toggle("on", a.dataset.tab === t));
+  document.querySelectorAll("[data-top]").forEach((a) => a.classList.toggle("on", a.dataset.top === t || (t !== "game" && t !== "kinds" && a.dataset.top === "wallet")));
+  const on = document.querySelector(`[data-tab="${t}"]`); on && on.scrollIntoView({ block: "nearest", inline: "center" });
+  if (t === "kinds" && !loaded.kinds) { loaded.kinds = 1; renderKinds(); }
+  if (t === "latest") renderLatest();
+  if (t === "lookup" && S.account && !$("lAddr").value) $("lAddr").value = S.account;
+  if (t === "game") renderPicker();
+  if (location.hash && TABS.includes(t)) {
+    const tabs = $("tabs"); const y = tabs.getBoundingClientRect().top + scrollY - 62;
+    if (scrollY > y) window.scrollTo({ top: y, behavior: "smooth" });
+  }
+}
+window.addEventListener("hashchange", route);
+
+/* ---------- init ---------- */
+$("demoBanner").hidden = !DEMO;
+if (DEMO && CONFIG.CONTRACT_ADDRESS && !HAS_ETHERS) $("demoBanner").dataset.i18n = "demoEthers";
+/* 所有游戏链接都指向 CONFIG.GAME_URL */
+document.querySelectorAll("[data-game-url]").forEach((a) => { a.href = CONFIG.GAME_URL; });
+
+/* ---------- 语言切换：即时重绘，不刷新，保留标签页和游戏状态 ---------- */
+function applyStatic() {
+  document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+  document.title = t("title");
+  const md = document.querySelector('meta[name="description"]'); if (md) md.content = t("metaDesc");
+  document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); });
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+  document.querySelectorAll("[data-game-label]").forEach((a) => { const k = a.getAttribute("data-game-label"); a.textContent = (k ? t(k) : "") + CONFIG.GAME_URL; });
+  document.querySelectorAll("#langBtn [data-l]").forEach((s) => s.classList.toggle("on", s.dataset.l === lang));
+  $("footContract").innerHTML = CONFIG.CONTRACT_ADDRESS ? `<a href="${explorerAddr(CONFIG.CONTRACT_ADDRESS)}" target="_blank" rel="noopener">NFT ${short(CONFIG.CONTRACT_ADDRESS)}</a>` : esc(t("nftNotDeployed"));
+}
+function applyLang() {
+  applyStatic();
+  renderWalletBtn(); renderStats(); renderWalletStats(); renderQuote();
+  if (wStatusFn) $("wStatus").innerHTML = wStatusFn();
+  renderReveal(); agentWalletInfo();
+  if (loaded.kinds) drawKinds();
+  drawLatest(); drawLookup();
+  renderLegend(); renderStartBtn(); renderPicker(); renderOverlay();
+}
+function setLang(l) {
+  if (l === lang) return;
+  lang = l; promptLang = l;
+  store.set("kry_lang", l);
+  applyLang();
+}
+$("langBtn").addEventListener("click", () => setLang(lang === "en" ? "zh" : "en"));
+applyStatic(); renderLegend(); renderStartBtn(); renderWalletBtn(); renderWalletStats();
+$("parade").innerHTML = [0, 4, 2, 7, 5, 9].map((k, i) => `<div class="px" style="animation-delay:${i * -0.5}s">${agentSVG(k, false, false)}</div>`).join("");
+$("walletBtn").addEventListener("click", () => { if (!S.account) connectWallet(); else { location.hash = "#lookup"; } });
+$("mintBtn").addEventListener("click", doMint);
+renderStepper("w"); renderStepper("a"); renderPrompt(); updHud(); renderPicker();
+route(); loadStats(); loadWalletStats();
+if (window.ethereum && HAS_ETHERS) {
+  window.ethereum.request({ method: "eth_accounts" }).then(async (a) => {
+    if (a && a[0]) {
+      S.account = ethers.getAddress(a[0]);
+      try { S.chainId = Number(await window.ethereum.request({ method: "eth_chainId" })); } catch (_) {}
+      bp = new ethers.BrowserProvider(window.ethereum); renderWalletBtn(); onAccount();
+    }
+  }).catch(() => {});
+  if (window.ethereum.on) {
+    window.ethereum.on("accountsChanged", (a) => { S.account = a && a[0] ? ethers.getAddress(a[0]) : null; signer = null; if (DEMO) demo.mine = []; renderWalletBtn(); onAccount(); });
+    window.ethereum.on("chainChanged", (c) => { S.chainId = Number(c); renderWalletBtn(); });
+  }
+}
+</script>
+</body>
+</html>
