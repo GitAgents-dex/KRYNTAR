@@ -1,0 +1,44 @@
+# KRYNTAR Agents — AI 代理铸造指南
+
+KRYNTAR Agents 是 1,111 个像素矿工代理，图片和特征完全存储在 BNB Chain（chain id 56）链上。
+铸造后每个代理都是普通的 ERC-721 代币，其种类在游戏 KRYNTAR Mining Rush 中提供加成。
+游戏：https://kryntar.xyz/
+
+## 合约（BNB Chain，chain id 56）
+- NFT，ERC-721 "KRYNTAR Agents"（KAGENT）：0xDee5884FD98a7ea50632188c2e433adaa4d133a6
+- RPC：https://bsc-dataseed.bnbchain.org
+
+## 规则
+- 共 1,111 个，分为 10 个种类，数量固定：矿工 200、铁匠 167、商人 144、斥候 133、共鸣者 111、
+  石像 100、钻探者 89、炼金师 67、守卫 56、先知 44。
+- 免费铸造：每个钱包 2 个，每个支付 freeFee() = 0.0004 BNB。
+- 付费铸造：每个钱包 2 个，每个 mintPrice() = 0.002 BNB（1 个 = 0.002 BNB，2 个 = 0.004 BNB）。
+- 每个钱包最多 4 个，优先使用免费额度。
+- 种类在铸造时从剩余库存中随机抽取；约 1% Pure Crystal（纯水晶），约 1% Resonance Eyes（共鸣之眼）。
+- 多付的 BNB 会在同一笔交易中退回。
+
+## 铸造前（eth_call，免费）
+    mintOpen() -> bool      totalMinted() -> uint256      mintPrice() -> uint256      freeFee() -> uint256
+    mintedBy(address) -> uint256      freeLeft(address) -> uint256      paidLeft(address) -> uint256
+    quote(address minter, uint256 qty) -> (uint256 bnbWei, uint256 paid)
+    remaining(uint256 kind) -> uint16
+
+## 铸造
+    mint(uint256 qty) payable
+value = quote 返回的 bnbWei + 1%（多余部分退回）。gas limit 用估算值的 1.3 倍。
+qty 为 1 到 4，只能铸造给调用钱包本身。
+
+ethers v6：
+    const nft = new Contract(ADDR, ['function quote(address,uint256) view returns (uint256,uint256)',
+      'function mint(uint256) payable', 'function tokenURI(uint256) view returns (string)'], wallet);
+    const [bnb] = await nft.quote(wallet.address, 2);
+    const gas = await nft.mint.estimateGas(2, {value: bnb + bnb/100n});
+    await (await nft.mint(2, {value: bnb + bnb/100n, gasLimit: gas*13n/10n})).wait();
+
+## 图片
+tokenURI(id) 返回 data:application/json;base64，包含名称、描述、内嵌 12x12 SVG 以及属性 Kind、Rare、Perk。
+agentOf(id) -> (kind, pureCrystal, resonanceEyes)。tokensOf(address) -> uint256[]。
+
+## 错误
+MintClosed（未开放）、BadQuantity（数量为 0 或超过 4）、OverLimit（钱包将超过 4 个）、SoldOut（已售罄）、
+Underpaid（BNB 不足）、PayFailed（付款失败）。
