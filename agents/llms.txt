@@ -2,7 +2,7 @@
 
 KRYNTAR Agents 是 1,111 个像素矿工代理，图片和特征完全存储在 BNB Chain（chain id 56）链上。
 铸造后每个代理都是普通的 ERC-721 代币，其种类在游戏 KRYNTAR Mining Rush 中提供加成。
-游戏：https://kryntar.xyz/
+游戏：https://kryntar.xyz/#game
 
 ## 合约（BNB Chain，chain id 56）
 - NFT，ERC-721 "KRYNTAR Agents"（KAGENT）：0xDee5884FD98a7ea50632188c2e433adaa4d133a6
