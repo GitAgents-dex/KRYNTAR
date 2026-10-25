@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>KRYNTAR Admin · Open Mint</title>
+<link rel="icon" type="image/png" href="/favicon.png" />
+<style>
+body{margin:0;background:#0a1220;color:#e8ecf3;font:16px/1.5 system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center}
+.box{width:min(92vw,420px);background:#111b2e;border:1px solid #f0b90b55;border-radius:18px;padding:22px}
+h1{margin:0 0 6px;color:#f0b90b;font-size:22px}
+p{margin:6px 0;color:#aab4c8;font-size:14px;word-break:break-all}
+button{width:100%;margin-top:12px;padding:14px;border:0;border-radius:12px;font-weight:800;font-size:16px;cursor:pointer}
+.y{background:#f0b90b;color:#111}.g{background:#26324a;color:#e8ecf3}
+#st{margin-top:14px;padding:12px;border-radius:10px;background:#0a1220;font-size:14px;white-space:pre-wrap;word-break:break-all}
+.ok{color:#4ade80}.er{color:#f87171}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>KRYNTAR · Admin</h1>
+<p>Contract: 0xDee5884FD98a7ea50632188c2e433adaa4d133a6</p>
+<p>Owner: 0x68d85675DbD8B63E537D07D01C50fc179F658A59</p>
+<button class="g" id="c">1. Connect wallet</button>
+<button class="y" id="o" disabled>2. Open minting (setMintOpen true)</button>
+<button class="g" id="x" disabled>Close minting</button>
+<div id="st">Status: checking…</div>
+</div>
+<script>
+const C="0xDee5884FD98a7ea50632188c2e433adaa4d133a6",OWNER="0x68d85675dbd8b63e537d07d01c50fc179f658a59";
+const RPC="https://bsc-dataseed.bnbchain.org";
+const st=document.getElementById('st');let acct=null;
+const P=()=>window.ethereum||window.trustwallet||(window.okxwallet&&window.okxwallet)||null;
+function log(t,c){st.className=c||'';st.textContent=t}
+async function rpc(m,p){const r=await fetch(RPC,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:m,params:p})});return (await r.json()).result}
+async function isOpen(){const r=await rpc('eth_call',[{to:C,data:'0x24bbd049'},'latest']);return r&&BigInt(r)===1n}
+async function refresh(extra){const o=await isOpen();log((extra?extra+'\n\n':'')+'Mint status on-chain: '+(o?'OPEN ✅':'CLOSED ⛔')+(acct?'\nWallet: '+acct:''),o?'ok':'')}
+async function connect(){
+  const p=P();
+  if(!p){log('No wallet found. Open this page inside the MetaMask / Trust / OKX wallet app browser:\nkryntar.xyz/admin/','er');return}
+  try{
+    const a=await p.request({method:'eth_requestAccounts'});acct=(a[0]||'').toLowerCase();
+    try{await p.request({method:'wallet_switchEthereumChain',params:[{chainId:'0x38'}]})}catch(e){
+      if(e.code===4902)await p.request({method:'wallet_addEthereumChain',params:[{chainId:'0x38',chainName:'BNB Smart Chain',nativeCurrency:{name:'BNB',symbol:'BNB',decimals:18},rpcUrls:[RPC],blockExplorerUrls:['https://bscscan.com']}]});else throw e}
+    if(acct!==OWNER){log('Wrong wallet ❌\nConnected: '+acct+'\nNeeded: '+OWNER+'\nSwitch to the owner wallet in your wallet app, then tap Connect again.','er');return}
+    document.getElementById('o').disabled=false;document.getElementById('x').disabled=false;
+    refresh('Owner wallet connected ✅ (BNB Chain)');
+  }catch(e){log('Connect failed: '+(e.message||e),'er')}
+}
+async function setOpen(v){
+  const p=P();
+  try{
+    const ch=await p.request({method:'eth_chainId'});if(ch!=='0x38'){await p.request({method:'wallet_switchEthereumChain',params:[{chainId:'0x38'}]})}
+    log('Confirm the transaction in your wallet…');
+    const data='0xf8004d31'+(v?'1':'0').padStart(64,'0');
+    const h=await p.request({method:'eth_sendTransaction',params:[{from:acct,to:C,data,value:'0x0',gas:'0xC350'}]});
+    log('Sent: '+h+'\nWaiting for confirmation…');
+    for(let i=0;i<40;i++){await new Promise(r=>setTimeout(r,3000));const rc=await rpc('eth_getTransactionReceipt',[h]);
+      if(rc){if(rc.status==='0x1'){return refresh('Done ✅ tx '+h)}else{return log('Transaction failed on-chain ❌ '+h,'er')}}}
+    refresh('Still pending: '+h);
+  }catch(e){log('Transaction not sent: '+(e.message||e)+'\nTip: make sure the wallet has a little BNB on BNB Chain for gas.','er')}
+}
+document.getElementById('c').onclick=connect;
+document.getElementById('o').onclick=()=>setOpen(true);
+document.getElementById('x').onclick=()=>setOpen(false);
+refresh();
+</script>
+</body>
+</html>
