@@ -183,6 +183,10 @@ button,input{font:inherit;color:inherit}
 .pick .try{display:block;color:var(--gold);font-size:10px}
 .recruit{display:flex;align-items:center;justify-content:center;width:56px;height:56px;margin:0 auto 4px;border-radius:8px;background:var(--panel2);font-size:26px}
 .gamebox{max-width:520px;margin:0 auto}
+.gamesec{border-top:1px solid var(--line2);margin-top:10px;padding-top:26px;padding-bottom:44px;scroll-margin-top:64px}
+.gwallet{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--dim);margin:4px 0 8px}
+.gwallet .pill{min-height:36px;padding:0 12px;font-size:13px}
+@media(max-width:380px){.hud{grid-template-columns:52px repeat(3,1fr);gap:6px}.hud .v{font-size:19px}.me .px{width:46px}#grid{gap:6px}}
 .perkline{font-size:13px;color:var(--dim);margin:2px 0 12px;min-height:20px}
 .perkline b{color:var(--green)}
 .hud{display:grid;grid-template-columns:64px repeat(3,1fr);gap:8px;margin-bottom:10px;align-items:stretch}
@@ -237,10 +241,10 @@ button,input{font:inherit;color:inherit}
     <a class="brand" href="#wallet" aria-label="KRYNTAR Agents"><span class="word">KRYNTAR</span><span class="badge-bnb">BNB Chain</span></a>
     <nav class="toplinks" data-i18n-aria="navMain" aria-label="主导航">
       <a href="#wallet" data-top="wallet" data-i18n="top_agents">代理</a>
-      <a href="#game" data-top="game" data-i18n="top_game">游戏</a>
+      <a href="#game" data-game-url data-top="game" data-i18n="top_game">游戏</a>
       <a href="#kinds" data-top="kinds" data-i18n="top_kinds">图鉴</a>
     </nav>
-    <a class="pill main x-gamebtn" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" data-i18n-aria="play_aria" aria-label="玩游戏">🎮<span class="x-gtxt" data-i18n="play_txt">玩游戏</span></a>
+    <a class="pill main x-gamebtn" data-game-url href="#game" data-i18n-aria="play_aria" aria-label="玩游戏">🎮<span class="x-gtxt" data-i18n="play_txt">玩游戏</span></a>
     <button class="pill x-lang" id="langBtn" type="button" data-i18n-aria="langAria" aria-label="切换语言"><span data-l="zh" class="on">中文</span>/<span data-l="en">EN</span></button>
     <button class="pill" id="walletBtn" type="button">连接钱包</button>
   </div>
@@ -254,8 +258,7 @@ button,input{font:inherit;color:inherit}
     <p class="sub" data-i18n="sub">1,111 个像素矿工代理，完全在 BNB Chain 链上绘制和存储。铸造你的代理，带它去挖矿。</p>
     <div class="x-herocta">
       <a class="pill bnb" href="#wallet" data-i18n="mintBnb">在 BNB Chain 铸造</a>
-      <a class="pill main" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" data-i18n="play">🎮 玩游戏</a>
-      <a class="pill" href="#game" data-i18n="tryHere">在本页试玩 →</a>
+      <a class="pill main" data-game-url href="#game" data-i18n="play">🎮 玩游戏</a>
     </div>
     <div class="parade" id="parade" aria-hidden="true"></div>
     <div class="counter">
@@ -274,7 +277,6 @@ button,input{font:inherit;color:inherit}
     <a href="#kinds" data-tab="kinds" data-i18n="tab_kinds">全部种类</a>
     <a href="#latest" data-tab="latest" data-i18n="tab_latest">最新铸造</a>
     <a href="#lookup" data-tab="lookup" data-i18n="tab_lookup">查钱包</a>
-    <a href="#game" data-tab="game" data-i18n="tab_game">游戏</a>
   </nav>
 
   <!-- MINT WALLET -->
@@ -304,7 +306,7 @@ button,input{font:inherit;color:inherit}
     <div id="revealBox" hidden>
       <h3 class="h3s" data-i18n="newAgents">你的新代理 ✨</h3>
       <div class="tiles reveal" id="revealGrid"></div>
-      <p class="x-gamenote"><a class="pill main" data-game-url data-game-label="playWithLbl" href="https://kryntar.xyz/" target="_blank" rel="noopener">带这个代理去玩 → https://kryntar.xyz/</a></p>
+      <p class="x-gamenote"><a class="pill main" id="revealPlay" data-game-url href="#game" data-i18n="playWithBtn">🎮 带这个代理去玩</a></p>
     </div>
   </section>
 
@@ -364,11 +366,14 @@ button,input{font:inherit;color:inherit}
     <div class="tiles" id="lGrid"></div>
   </section>
 
-  <!-- GAME -->
-  <section class="view" id="v-game">
+</main>
+
+<!-- GAME：始终显示在页面底部（不属于标签页） -->
+  <section class="gamesec wrap" id="game" aria-labelledby="gTitle">
     <div class="gamebox">
-      <div class="vh"><h2 data-i18n="g_title">KRYNTAR 挖矿冲刺</h2><p data-i18n="g_desc">45 秒。尽可能多地挖矿石，避开 🌋 岩浆。你的代理会提供加成。</p></div>
+      <div class="vh"><h2 id="gTitle" data-i18n="g_title">KRYNTAR 挖矿冲刺</h2><p data-i18n="g_desc">45 秒。尽可能多地挖矿石，避开 🌋 岩浆。你的代理会提供加成。</p></div>
       <span class="lbl" data-i18n="yourAgent">你的代理</span>
+      <div class="gwallet" id="gWallet"></div>
       <div class="picker" id="picker"></div>
       <p class="perkline" id="perkLine"></p>
       <div class="hud">
@@ -382,11 +387,10 @@ button,input{font:inherit;color:inherit}
       <div class="legend" id="legend"></div>
       <button class="pill main wide" id="startBtn" type="button">开始挖矿 ⛏️</button>
       <p class="dim" style="text-align:center;margin:10px 0 0"><span data-i18n="bestC">最高分：</span><b id="gBest" style="color:#fff">0</b></p>
-      <a class="cta" id="mintCta" href="#wallet" data-i18n="mintCta">铸造代理获得加成 →</a>
-      <p class="x-gamenote"><a class="pill" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" data-i18n="playFull">🎮 玩完整版 KRYNTAR 游戏</a></p>
+      <a class="pill bnb wide" id="mintCta" href="#wallet" data-i18n="mintCta" style="margin-top:10px">铸造代理获得加成 →</a>
     </div>
   </section>
-</main>
+
 
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
   <div class="card">
@@ -402,7 +406,6 @@ button,input{font:inherit;color:inherit}
       <button class="pill main" id="againBtn" type="button" data-i18n="again">再玩一次</button>
       <a class="pill bnb" id="ovMint" href="#wallet" data-i18n="mintAgent">铸造代理</a>
     </div>
-    <a class="pill" data-game-url href="https://kryntar.xyz/" target="_blank" rel="noopener" style="margin-top:8px;width:100%" data-i18n="playFullShort">🎮 玩完整版游戏</a>
     <button class="pill" id="ovClose" type="button" style="margin-top:8px;width:100%" data-i18n="close">关闭</button>
   </div>
 </div>
@@ -411,7 +414,7 @@ button,input{font:inherit;color:inherit}
   <div class="wrap">
     <p><span class="word">KRYNTAR</span> <span class="badge-bnb">BNB Chain</span></p>
     <p><span data-i18n="contractC">合约：</span><span id="footContract" class="mono">尚未部署</span></p>
-    <p><span data-i18n="gameC">🎮 游戏：</span><a data-game-url data-game-label="" href="https://kryntar.xyz/" class="mono" target="_blank" rel="noopener">https://kryntar.xyz/</a></p>
+    <p><span data-i18n="gameC">🎮 游戏：</span><a data-game-url data-game-label="gameLinkLbl" href="#game">挖矿冲刺（本页底部）</a></p>
     <p data-i18n-html="aiFoot">AI 代理：阅读 <a href="/agents/llms.txt" class="mono">/agents/llms.txt</a> 通过合约铸造。</p>
     <p data-i18n="footSum">1,111 个代理 · 免费铸造每个钱包 2 个（0.0004 BNB）· 付费铸造每个钱包 2 个（0.002 BNB）· 每个钱包最多 4 个。</p>
     <p data-i18n="footDisc">价格与限制由合约决定；本页面只读取链上数据并请求你的钱包发送交易。</p>
@@ -550,11 +553,11 @@ button,input{font:inherit;color:inherit}
      RPC_URL "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
      EXPLORER "https://testnet.bscscan.com", SYMBOL "tBNB"
    CONTRACT_ADDRESS 为空 = 演示模式（本地数据，无交易）
-   GAME_URL = 完整 KRYNTAR 游戏地址（页眉、首屏、页脚、铸造结果都会用到）
+   GAME_URL = 游戏地址。"#game" = 本页底部的挖矿冲刺（同一标签页内滚动）；外部地址会在新标签页打开
    ===================================================================== */
 const CONFIG = {
   CONTRACT_ADDRESS: "0xDee5884FD98a7ea50632188c2e433adaa4d133a6" /* 部署 KryntarAgents.sol 后填写 */,
-  GAME_URL: "https://kryntar.xyz/",
+  GAME_URL: "#game" /* 本页底部的挖矿冲刺；也可填外部完整地址 */,
   CHAIN_ID: 56,
   CHAIN_HEX: "0x38",
   CHAIN_NAME: "BNB Smart Chain",
@@ -614,6 +617,8 @@ function toast(msg, type) {
   $("toasts").appendChild(t);
   setTimeout(() => t.remove(), 4200);
 }
+const GAME_IN_PAGE = /^#/.test(CONFIG.GAME_URL);
+const GAME_ABS = GAME_IN_PAGE ? "https://kryntar.xyz/" + CONFIG.GAME_URL : CONFIG.GAME_URL; /* 给 AI 代理提示词用的完整地址 */
 const explorerTx = (h) => `${CONFIG.EXPLORER}/tx/${h}`;
 const explorerAddr = (a) => `${CONFIG.EXPLORER}/address/${a}`;
 
@@ -667,7 +672,7 @@ const I18N = {
     leftN: "剩余 {n}", gamePerkC: "游戏加成：", perkC: "加成：", rareC: "稀有：", tokenFail: "代币加载失败", tokenFailDot: "代币加载失败。", artAlt: "代理 #{id}",
     l_title: "最新铸造", l_desc: "最近铸造的 12 个代理。", scanAll: "在 BscScan 查看全部", noneMinted: "还没有代理被铸造。",
     lu_title: "查钱包", lu_desc: "查看已铸造数量和持有的代理。", addr: "钱包地址", lookupBtn: "查询", s_minted: "已铸造", s_free: "剩余免费", s_paid: "剩余付费",
-    badAddr: "钱包地址无效", noAgents: "该钱包还没有代理。", noAgentsDemo: "（演示模式：请先用已连接的钱包铸造。）", lookupFail: "读取钱包失败。",
+    badAddr: "钱包地址无效", gameLinkLbl: "挖矿冲刺（本页底部）", gDemo: "演示模式：可以试玩每个种类。", gNoWallet: "未连接钱包：以新兵身份游玩（无加成）。连接钱包即可使用你的代理。", gLoading: "正在读取你的代理…", gFail: "读取代理失败，先以新兵身份游玩。", gRetry: "重试", gNone: "{a} 还没有代理：以新兵身份游玩（无加成）。", gHave: "{a} · {n} 个代理，点选一个出战。", noAgents: "该钱包还没有代理。", noAgentsDemo: "（演示模式：请先用已连接的钱包铸造。）", lookupFail: "读取钱包失败。",
     g_title: "KRYNTAR 挖矿冲刺", g_desc: "45 秒。尽可能多地挖矿石，避开 🌋 岩浆。你的代理会提供加成。",
     yourAgent: "你的代理", score: "得分", combo: "连击", lives: "生命",
     ore_stone: "石头", ore_iron: "铁", ore_gold: "金", ore_crystal: "水晶", ore_lava: "岩浆", minusLife: "−生命",
@@ -731,7 +736,7 @@ const I18N = {
     leftN: "{n} left", gamePerkC: "Game perk: ", perkC: "Perk: ", rareC: "Rare: ", tokenFail: "Token failed to load", tokenFailDot: "Tokens failed to load.", artAlt: "Agent #{id}",
     l_title: "Latest minted", l_desc: "The 12 most recently minted agents. ", scanAll: "See all on BscScan", noneMinted: "No agents minted yet.",
     lu_title: "Look up a wallet", lu_desc: "See how many agents a wallet has minted and which it holds.", addr: "Wallet address", lookupBtn: "Look up", s_minted: "Minted", s_free: "Free left", s_paid: "Paid left",
-    badAddr: "Invalid wallet address", noAgents: "This wallet has no agents yet.", noAgentsDemo: " (Demo mode: mint with the connected wallet first.)", lookupFail: "Could not read the wallet.",
+    badAddr: "Invalid wallet address", gameLinkLbl: "Mining Rush (bottom of this page)", gDemo: "Demo mode: try any kind.", gNoWallet: "No wallet connected: you play as a Recruit (no perk). Connect a wallet to use your agents.", gLoading: "Reading your agents…", gFail: "Couldn't read your agents. Playing as a Recruit for now.", gRetry: "Retry", gNone: "{a} holds no agents yet: you play as a Recruit (no perk).", gHave: "{a} · {n} agents. Tap one to play with it.", noAgents: "This wallet has no agents yet.", noAgentsDemo: " (Demo mode: mint with the connected wallet first.)", lookupFail: "Could not read the wallet.",
     g_title: "KRYNTAR Mining Rush", g_desc: "45 seconds. Mine as much ore as you can and avoid 🌋 lava. Your agent gives you a perk.",
     yourAgent: "Your agent", score: "Score", combo: "Combo", lives: "Lives",
     ore_stone: "Stone", ore_iron: "Iron", ore_gold: "Gold", ore_crystal: "Crystal", ore_lava: "Lava", minusLife: "−life",
@@ -1024,7 +1029,7 @@ async function doMint() {
     console.warn(e); wSt(() => esc(mapError(e))); toast(mapError(e), "err");
   } finally { mintBusy = null; updateQuote(); }
 }
-let revealToks = null;
+let revealToks = null, revealPick = null;
 function renderReveal() {
   if (!revealToks) return;
   $("revealGrid").innerHTML = revealToks.map((tk, i) => tk ? `<div class="tile" style="animation-delay:${i * 0.12}s">
@@ -1034,7 +1039,7 @@ function renderReveal() {
       <div class="chips">${rareChips(tk.pc, tk.re)}</div>
       <div class="perk">${esc(t("gamePerkC"))}<b>${esc(tokPerk(tk))}</b></div>
       <button class="pill main" type="button" data-play="${tk.id}">${esc(t("tryHere"))}</button>
-      <a class="pill" href="${esc(CONFIG.GAME_URL)}" target="_blank" rel="noopener">${esc(t("playWithBtn"))}</a>
+      <a class="pill" href="#game" data-play="${tk.id}">${esc(t("playWithBtn"))}</a>
     </div>` : `<div class="tile empty">${esc(t("tokenFail"))}</div>`).join("");
 }
 async function afterMint(ids) {
@@ -1045,11 +1050,12 @@ async function afterMint(ids) {
   box.scrollIntoView({ behavior: "smooth", block: "start" });
   revealToks = await Promise.all(ids.map((id) => fetchToken(id).catch(() => null)));
   renderReveal();
+  const lastOk = revealToks.filter(Boolean).pop(); revealPick = lastOk ? "t" + lastOk.id : null;
   await loadOwned();
 }
 $("revealGrid").addEventListener("click", (e) => {
   const b = e.target.closest("[data-play]"); if (!b) return;
-  pendingPick = "t" + b.dataset.play; location.hash = "#game";
+  e.preventDefault(); goGame("t" + b.dataset.play);
 });
 
 /* ---------- AI 代理提示词（中文 / English，默认跟随页面语言） ---------- */
@@ -1077,7 +1083,7 @@ function renderPrompt() {
       `6. Only mint from your own wallet to your own wallet. Do not mint for any other address.`,
       `7. Report the tx hash and the token ids from the AgentMinted events.`,
       ``,
-      `After minting, take the agent to the KRYNTAR game: ${CONFIG.GAME_URL}`,
+      `After minting, take the agent to the KRYNTAR game: ${GAME_ABS}`,
       `Full instructions: https://kryntar.xyz/agents/llms.txt`,
     ];
     $("promptBox").textContent = L.join("\n");
@@ -1103,7 +1109,7 @@ function renderPrompt() {
     `6. 只能从你自己的钱包铸造到你自己的钱包。不要为其他地址铸造。`,
     `7. 报告 tx hash 以及 AgentMinted 事件中的 token id。`,
     ``,
-    `铸造后，带代理去玩 KRYNTAR 游戏：${CONFIG.GAME_URL}`,
+    `铸造后，带代理去玩 KRYNTAR 游戏：${GAME_ABS}`,
     `完整说明：https://kryntar.xyz/agents/llms.txt`,
   ];
   $("promptBox").textContent = L.join("\n");
@@ -1221,14 +1227,50 @@ $("lBtn").addEventListener("click", doLookup);
 $("lAddr").addEventListener("keydown", (e) => { if (e.key === "Enter") doLookup(); });
 
 /* ---------- agent milik user (untuk game) ---------- */
-let pendingPick = null, pick = "r";
+let pendingPick = null, pick = "r", ownedState = "idle"; /* idle | loading | ok | fail */
+/* ERC-721 Enumerable：balanceOf + tokenOfOwnerByIndex（失败时退回 tokensOf） */
+async function ownedIds(a) {
+  try {
+    const n = Number(await readC.balanceOf(a)), from = Math.max(0, n - 24);
+    const idx = []; for (let i = from; i < n; i++) idx.push(i);
+    return (await Promise.all(idx.map((i) => readC.tokenOfOwnerByIndex(a, i)))).map(Number);
+  } catch (e) { console.warn(e); return (await readC.tokensOf(a)).map(Number).slice(-24); }
+}
+let ownedSeq = 0;
 async function loadOwned() {
-  if (DEMO) S.owned = await Promise.all(demo.mine.map((m) => fetchToken(m.id)));
-  else if (S.account) {
-    try { const ids = (await readC.tokensOf(S.account)).map(Number).slice(-24); S.owned = (await Promise.all(ids.map((id) => fetchToken(id).catch(() => null)))).filter(Boolean); }
-    catch (e) { console.warn(e); S.owned = []; }
-  } else S.owned = [];
+  const seq = ++ownedSeq;
+  if (DEMO) { S.owned = await Promise.all(demo.mine.map((m) => fetchToken(m.id))); ownedState = "ok"; }
+  else if (S.account && readC) {
+    ownedState = "loading"; renderPicker();
+    let list = [], st = "ok";
+    try { const ids = await ownedIds(S.account); list = (await Promise.all(ids.map((id) => fetchToken(id).catch(() => null)))).filter(Boolean); }
+    catch (e) { console.warn(e); st = "fail"; }
+    if (seq !== ownedSeq) return;
+    S.owned = list; ownedState = st;
+  } else { S.owned = []; ownedState = "idle"; }
   renderPicker();
+}
+function renderGWallet() {
+  const el = $("gWallet");
+  let msg, btn = "";
+  if (DEMO) msg = esc(t("gDemo"));
+  else if (!S.account) { msg = esc(t("gNoWallet")); btn = `<button class="pill main" type="button" id="gConnect">${esc(t("connect"))}</button>`; }
+  else if (ownedState === "loading") msg = esc(t("gLoading"));
+  else if (ownedState === "fail") { msg = esc(t("gFail")); btn = `<button class="pill" type="button" id="gRetry">${esc(t("gRetry"))}</button>`; }
+  else if (!S.owned.length) msg = esc(t("gNone", { a: short(S.account) }));
+  else msg = esc(t("gHave", { a: short(S.account), n: S.owned.length }));
+  el.innerHTML = `<span>${msg}</span>${btn}`;
+}
+$("gWallet").addEventListener("click", (e) => {
+  if (e.target.closest("#gConnect")) connectWallet();
+  else if (e.target.closest("#gRetry")) loadOwned();
+});
+/* 滚动到本页底部的游戏（同一标签页） */
+function goGame(key) {
+  if (key) pendingPick = key;
+  if (location.hash !== "#game") { try { history.pushState(null, "", "#game"); } catch (_) {} }
+  renderPicker();
+  $("game").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 function pickOptions() {
   const opts = [{ key: "r", kind: -1, pc: false, re: false, label: t("recruit"), sub: t("noPerk") }];
@@ -1253,6 +1295,7 @@ function renderPicker() {
   const nm = lang === "en" ? esc(KINDS[c.kind]?.en || "") : `${esc(kindName(c.kind))} <span style="font-size:12px">${esc(KINDS[c.kind]?.en || "")}</span>`;
   $("perkLine").innerHTML = c.kind < 0 ? esc(t("recruitNoPerk")) : `${nm}${c.trial ? esc(t("trialParen")) : ""}${lang === "en" ? ": " : "："}<b>${esc(bits.join(" · "))}</b>`;
   $("mintCta").hidden = S.owned.length > 0;
+  renderGWallet();
 }
 $("picker").addEventListener("click", (e) => { const b = e.target.closest("[data-key]"); if (!b || running) return; pick = b.dataset.key; renderPicker(); });
 
@@ -1389,21 +1432,29 @@ $("ovClose").addEventListener("click", () => $("ov").classList.remove("show"));
 $("ovMint").addEventListener("click", () => $("ov").classList.remove("show"));
 
 /* ---------- routing (#agent #wallet #kinds #latest #lookup #game) ---------- */
-const TABS = ["agent", "wallet", "kinds", "latest", "lookup", "game"];
+const TABS = ["agent", "wallet", "kinds", "latest", "lookup"];
 const loaded = {};
+let curTab = null;
 function route() {
-  let t = (location.hash || "").slice(1);
-  if (!TABS.includes(t)) t = "wallet";
-  if (t !== "game") stopGame();
+  const h = (location.hash || "").slice(1);
+  if (h === "game") { /* 游戏不是标签页：保留当前标签页，滚动到底部游戏 */
+    if (!curTab) showTab("wallet", false);
+    renderPicker();
+    requestAnimationFrame(() => $("game").scrollIntoView({ block: "start" }));
+    return;
+  }
+  showTab(TABS.includes(h) ? h : "wallet", true);
+}
+function showTab(t, scroll) {
+  curTab = t;
   TABS.forEach((x) => $("v-" + x).classList.toggle("on", x === t));
   document.querySelectorAll("[data-tab]").forEach((a) => a.classList.toggle("on", a.dataset.tab === t));
-  document.querySelectorAll("[data-top]").forEach((a) => a.classList.toggle("on", a.dataset.top === t || (t !== "game" && t !== "kinds" && a.dataset.top === "wallet")));
+  document.querySelectorAll("[data-top]").forEach((a) => a.classList.toggle("on", a.dataset.top === t || (t !== "kinds" && a.dataset.top === "wallet")));
   const on = document.querySelector(`[data-tab="${t}"]`); on && on.scrollIntoView({ block: "nearest", inline: "center" });
   if (t === "kinds" && !loaded.kinds) { loaded.kinds = 1; renderKinds(); }
   if (t === "latest") renderLatest();
   if (t === "lookup" && S.account && !$("lAddr").value) $("lAddr").value = S.account;
-  if (t === "game") renderPicker();
-  if (location.hash && TABS.includes(t)) {
+  if (scroll && location.hash && TABS.includes(t)) {
     const tabs = $("tabs"); const y = tabs.getBoundingClientRect().top + scrollY - 62;
     if (scrollY > y) window.scrollTo({ top: y, behavior: "smooth" });
   }
@@ -1414,7 +1465,20 @@ window.addEventListener("hashchange", route);
 $("demoBanner").hidden = !DEMO;
 if (DEMO && CONFIG.CONTRACT_ADDRESS && !HAS_ETHERS) $("demoBanner").dataset.i18n = "demoEthers";
 /* 所有游戏链接都指向 CONFIG.GAME_URL */
-document.querySelectorAll("[data-game-url]").forEach((a) => { a.href = CONFIG.GAME_URL; });
+document.querySelectorAll("[data-game-url]").forEach((a) => {
+  a.href = CONFIG.GAME_URL;
+  if (GAME_IN_PAGE) { a.removeAttribute("target"); a.removeAttribute("rel"); } else { a.target = "_blank"; a.rel = "noopener"; }
+});
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a[href]"); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  const href = a.getAttribute("href");
+  if (GAME_IN_PAGE && (a.hasAttribute("data-game-url") || href === "#game")) {
+    e.preventDefault(); $("ov").classList.remove("show");
+    goGame(a.id === "revealPlay" ? revealPick : null); return;
+  }
+  /* 再次点击当前标签页的链接（如游戏里的“铸造”按钮）也要切换并滚动 */
+  if (href === location.hash && TABS.includes(href.slice(1))) { e.preventDefault(); route(); }
+});
 
 /* ---------- 语言切换：即时重绘，不刷新，保留标签页和游戏状态 ---------- */
 function applyStatic() {
@@ -1424,7 +1488,7 @@ function applyStatic() {
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
   document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); });
   document.querySelectorAll("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
-  document.querySelectorAll("[data-game-label]").forEach((a) => { const k = a.getAttribute("data-game-label"); a.textContent = (k ? t(k) : "") + CONFIG.GAME_URL; });
+  document.querySelectorAll("[data-game-label]").forEach((a) => { a.textContent = GAME_IN_PAGE ? t(a.getAttribute("data-game-label") || "gameLinkLbl") : CONFIG.GAME_URL; });
   document.querySelectorAll("#langBtn [data-l]").forEach((s) => s.classList.toggle("on", s.dataset.l === lang));
   $("footContract").innerHTML = CONFIG.CONTRACT_ADDRESS ? `<a href="${explorerAddr(CONFIG.CONTRACT_ADDRESS)}" target="_blank" rel="noopener">NFT ${short(CONFIG.CONTRACT_ADDRESS)}</a>` : esc(t("nftNotDeployed"));
 }
@@ -1449,7 +1513,13 @@ $("parade").innerHTML = [0, 4, 2, 7, 5, 9].map((k, i) => `<div class="px" style=
 $("walletBtn").addEventListener("click", () => { if (!S.account) connectWallet(); else { location.hash = "#lookup"; } });
 $("mintBtn").addEventListener("click", doMint);
 renderStepper("w"); renderStepper("a"); renderPrompt(); updHud(); renderPicker();
-route(); loadStats(); loadWalletStats();
+route();
+/* 直接打开 …/#game 时：等上方内容加载完再对齐一次（异步数据会改变页面高度） */
+if (location.hash === "#game") {
+  const reGame = () => { if (location.hash === "#game" && !running) $("game").scrollIntoView({ block: "start" }); };
+  Promise.allSettled([loadStats(), loadWalletStats()]).then(() => setTimeout(reGame, 150));
+  window.addEventListener("load", () => setTimeout(reGame, 150), { once: true });
+} else { loadStats(); loadWalletStats(); }
 if (window.ethereum && HAS_ETHERS) {
   window.ethereum.request({ method: "eth_accounts" }).then(async (a) => {
     if (a && a[0]) {
