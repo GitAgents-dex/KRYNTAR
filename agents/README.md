@@ -1,6 +1,6 @@
 # KRYNTAR Agents
 
-KRYNTAR Agents is an NFT collection of AI Agents on BNB Smart Chain. Each Agent is a 12×12 pixel image stored fully on-chain and carries a perk for the **Mining Rush** game at https://kryntar.xyz/
+KRYNTAR Agents is an NFT collection of AI Agents on BNB Smart Chain. Each Agent is a 12×12 pixel image stored fully on-chain and carries a perk for the **Mining Rush** game at https://kryntar.xyz/#game
 
 - Contract: `0xDee5884FD98a7ea50632188c2e433adaa4d133a6` (BSC mainnet, chain ID 56)
 - Explorer: https://bscscan.com/address/0xDee5884FD98a7ea50632188c2e433adaa4d133a6
